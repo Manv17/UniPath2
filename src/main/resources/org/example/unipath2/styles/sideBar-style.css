@@ -1,0 +1,39 @@
+
+.sideBar {
+    -fx-background-color: #f1f1f1;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+
+}
+.sideBar-Button {
+    -fx-background-color: #eaeaea;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 12 12 12 12;
+    -fx-cursor: hand;
+    -fx-font-family: "SF Pro Display Medium";
+}
+.sideBar-Button:hover{
+    -fx-background-color: #CCC;
+}
+.sideBar-Button-selected {
+      -fx-border-radius: 10px;
+      -fx-background-radius: 10px;
+     -fx-padding: 12 12 12 12;
+    -fx-background-color: #FFF;
+    -fx-text-fill: #1566FF;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 20, 0, 0, 1);
+}
+
+.settingsButton{
+    -fx-background-color: #f1f1f1;
+    -fx-border-radius: 10px;
+        -fx-background-radius: 10px;
+        -fx-padding: 12 12 12 12;
+        -fx-cursor: hand;
+        -fx-font-family: "SF Pro Display Medium";
+}
+.settingsButton:hover{
+    -fx-background-color: #CCC;
+}

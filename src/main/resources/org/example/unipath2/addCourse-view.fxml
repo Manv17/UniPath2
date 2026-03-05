@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="700.0" spacing="30.0" style="-fx-background-color: fff;" stylesheets="@styles/button-style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.unipath2.ui.controllers.windows.adds.AddCourseController">
+   <children>
+      <Label text="Aggiungi Corso">
+         <font>
+            <Font name="SF Pro Display Bold" size="24.0" />
+         </font>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Label>
+      <HBox maxWidth="-Infinity" spacing="60.0">
+         <children>
+            <VBox maxHeight="100.0" maxWidth="350.0" prefHeight="100.0" spacing="6.0">
+               <children>
+                  <Label text="Nome corso:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nameField" prefWidth="550.0" />
+               </children>
+            </VBox>
+            <VBox prefWidth="150.0" spacing="6.0">
+               <children>
+                  <Label text="Cfu:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="cfuChoice" maxHeight="-Infinity" prefWidth="70.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox maxWidth="-Infinity" spacing="60.0">
+         <children>
+            <VBox prefWidth="200.0" spacing="6.0">
+               <children>
+                  <Label text="Anno:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="yearChoice" maxWidth="1.7976931348623157E308" />
+               </children>
+            </VBox>
+            <VBox maxHeight="100.0" prefWidth="300.0" spacing="6.0">
+               <children>
+                  <Label text="Semestre:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="semesterChoice" maxWidth="1.7976931348623157E308" prefHeight="30.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox maxWidth="-Infinity" spacing="60.0">
+         <children>
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="300.0" spacing="6.0">
+               <children>
+                  <Label text="Stato:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="statusChoice" maxWidth="1.7976931348623157E308" />
+               </children>
+            </VBox>
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0" spacing="6.0">
+               <children>
+                  <Label fx:id="gradeLabel" text="Voto:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="gradeChoice" maxWidth="1.7976931348623157E308" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="-Infinity" spacing="6.0">
+         <children>
+            <Label text="Data:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="datePicker" prefWidth="300.0" />
+         </children>
+      </VBox>
+      <ButtonBar maxHeight="1.7976931348623157E308" prefHeight="90.0" prefWidth="200.0">
+        <buttons>
+          <Button mnemonicParsing="false" onAction="#handleUndoButton" text="Annulla" />
+            <Button mnemonicParsing="false" onAction="#handleAddButton" text="Aggiungi" />
+        </buttons>
+      </ButtonBar>
+   </children>
+   <padding>
+      <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+   </padding>
+</VBox>

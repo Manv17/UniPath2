@@ -1,0 +1,94 @@
+package org.example.unipath2.domain.career;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.example.unipath2.domain.course.Course;
+import org.example.unipath2.domain.enums.CourseType;
+import org.example.unipath2.domain.enums.DegreeType;
+import org.example.unipath2.application.exception.DuplicateCourseException;
+
+import java.util.*;
+
+public class Career implements Subject {
+    private final List<Course> courses;
+    @JsonIgnore
+    private final Set<Observer> observers = new HashSet<>();
+    @JsonIgnore
+    private int TOTAL_CFU;
+
+    private DegreeType degreeType = DegreeType.BACHELOR;
+
+    public Career() {
+        this.courses = new ArrayList<>();
+    }
+
+    @Override
+    public void addObserver(Observer o) {
+        observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        observers.remove(o);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer o : new ArrayList<>(observers)) {
+            o.update(this);
+        }
+    }
+
+    public double getTOTAL_CFU() {
+        return TOTAL_CFU;
+    }
+
+    public void setTOTAL_CFU(int TOTAL_CFU) {
+        this.TOTAL_CFU = TOTAL_CFU;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void addCourse(Course newCourse) throws DuplicateCourseException {
+        if (newCourse == null) return;
+
+        for (Course course : courses) {
+            if (course.equals(newCourse)) {
+                if (newCourse.getType() == CourseType.GRADED) {
+                    throw new DuplicateCourseException("Corso " + newCourse.getName() + " già esistente!");
+                } else {
+                    throw new DuplicateCourseException("Idoneità " + newCourse.getName() + " già esistente!");
+                }
+            }
+        }
+
+        courses.add(newCourse);
+        notifyObservers();
+    }
+
+    public void removeCourse(Course c) {
+        if (courses.remove(c)) {
+            notifyObservers();
+        }
+    }
+
+    public DegreeType getDegreeType() {
+        return degreeType != null ? degreeType : DegreeType.BACHELOR;
+    }
+
+    public void setDegreeType(DegreeType degreeType) {
+        this.degreeType = (degreeType != null) ? degreeType : DegreeType.BACHELOR;
+        if (degreeType == DegreeType.BACHELOR) {
+            setTOTAL_CFU(180);
+        } else {
+            setTOTAL_CFU(120);
+        }
+        notifyObservers();
+    }
+
+    public void resetCareer() {
+        courses.clear();
+        notifyObservers();
+    }
+}

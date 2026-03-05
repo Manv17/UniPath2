@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.unipath2.ui.controllers.pages.StatsController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0">
+         <left>
+            <VBox prefHeight="720.0" prefWidth="200.0" style="-fx-background-color: ddd;" BorderPane.alignment="CENTER" />
+         </left>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-effect: null; -fx-border-insets: 0; -fx-background-color: eee;" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0">
+         <left>
+            <VBox alignment="TOP_CENTER" prefHeight="720.0" prefWidth="200.0" spacing="20.0" style="-fx-background-color: f1f1f1;" stylesheets="@styles/sideBar-style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox spacing="20.0">
+                     <children>
+                        <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" minWidth="0.0" mnemonicParsing="false" onAction="#handleHomeButton" styleClass="sideBar-Button" text="Home" />
+                        <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" minWidth="150.0" mnemonicParsing="false" onAction="#handleLibrettoButton" styleClass="sideBar-Button" text="Libretto" />
+                        <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" minWidth="150.0" mnemonicParsing="false" styleClass="sideBar-Button-selected" text="Statistiche" />
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" top="70.0" />
+               </padding>
+            </VBox>
+         </left>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-effect: null; -fx-border-insets: 0; -fx-background-color: fff;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="50.0" layoutY="30.0" text="Statistiche">
+                     <font>
+                        <Font name="SF Pro Display Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <VBox layoutX="50.0" layoutY="100.0" prefHeight="600.0" prefWidth="1000.0" spacing="20.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="300.0">
+                           <children>
+                              <HBox spacing="20.0">
+                                 <children>
+                                    <VBox prefHeight="400.0" prefWidth="250.0" spacing="10.0" style="-fx-background-color: fff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
+                                       <children>
+                                          <HBox spacing="30.0">
+                                             <children>
+                                                <VBox spacing="4.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Media">
+                                                         <font>
+                                                            <Font name="SF Pro Display Regular" size="14.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Label id="avgLabel" fx:id="avgLabel" text="Label">
+                                                         <font>
+                                                            <Font name="SF Pro Display Bold" size="30.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox prefHeight="400.0" prefWidth="250.0" spacing="10.0" style="-fx-background-color: fff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
+                                       <children>
+                                          <HBox spacing="30.0">
+                                             <children>
+                                                <VBox spacing="4.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Avanzamento carriera">
+                                                         <font>
+                                                            <Font name="SF Pro Display Regular" size="14.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Label id="avgLabel" fx:id="careerProgressLabel" text="Label">
+                                                         <font>
+                                                            <Font name="SF Pro Display Bold" size="30.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox prefHeight="400.0" prefWidth="250.0" spacing="10.0" style="-fx-background-color: fff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
+                                       <children>
+                                          <HBox spacing="30.0">
+                                             <children>
+                                                <VBox spacing="4.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Situazione esami">
+                                                         <font>
+                                                            <Font name="SF Pro Display Regular" size="14.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Label id="avgLabel" fx:id="courseProgressLabel" text="Label">
+                                                         <font>
+                                                            <Font name="SF Pro Display Bold" size="30.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox prefHeight="400.0" prefWidth="250.0" spacing="10.0" style="-fx-background-color: fff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
+                                       <children>
+                                          <HBox spacing="30.0">
+                                             <children>
+                                                <VBox spacing="4.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Esami prenotati">
+                                                         <font>
+                                                            <Font name="SF Pro Display Regular" size="14.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Label id="avgLabel" fx:id="plannedCourseLabel" text="Label">
+                                                         <font>
+                                                            <Font name="SF Pro Display Bold" size="30.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="300.0">
+                           <children>
+                              <HBox spacing="20.0">
+                                 <children>
+                                    <VBox prefHeight="400.0" prefWidth="490.0" spacing="10.0" style="-fx-background-color: fff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
+                                       <children>
+                                          <HBox spacing="30.0">
+                                             <children>
+                                                <VBox spacing="4.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Miglior esame">
+                                                         <font>
+                                                            <Font name="SF Pro Display Regular" size="14.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Label id="avgLabel" fx:id="bestCourseLabel" text="Label">
+                                                         <font>
+                                                            <Font name="SF Pro Display Bold" size="24.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox prefHeight="400.0" prefWidth="490.0" spacing="10.0" style="-fx-background-color: fff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
+                                       <children>
+                                          <HBox spacing="30.0">
+                                             <children>
+                                                <VBox spacing="4.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Peggior esame">
+                                                         <font>
+                                                            <Font name="SF Pro Display Regular" size="14.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Label id="avgLabel" fx:id="worstCourseLabel" text="Label">
+                                                         <font>
+                                                            <Font name="SF Pro Display Bold" size="24.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="360.0" prefWidth="1000.0" spacing="20.0" stylesheets="@styles/graph-style.css">
+                           <children>
+                              <VBox spacing="6.0" style="-fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
+                                 <children>
+                                    <Label text="Andamento media ponderata e voti">
+                                       <font>
+                                          <Font name="SF Pro Display Semibold" size="18.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Label>
+                                    <LineChart fx:id="weightedAvgGradesChart" titleSide="BOTTOM">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis autoRanging="false" forceZeroInRange="false" lowerBound="18.0" minorTickCount="0" side="LEFT" tickLabelGap="6.0" tickLength="4.0" tickUnit="1.0" upperBound="30.0" />
+                                      </yAxis>
+                                    </LineChart>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="12.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox spacing="6.0" style="-fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
+                                 <children>
+                                    <Label text="Andamento CFU">
+                                       <font>
+                                          <Font name="SF Pro Display Semibold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <LineChart fx:id="cfuChart">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis autoRanging="false" side="LEFT" tickUnit="30.0" upperBound="180.0" />
+                                      </yAxis>
+                                    </LineChart>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="12.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children></VBox>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

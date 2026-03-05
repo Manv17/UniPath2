@@ -1,0 +1,102 @@
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 10;
+    -fx-table-cell-border-color: transparent;
+    -fx-control-inner-background: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-family: "SF Pro Display Medium";
+    -fx-text-fill: #000;
+    -fx-fixed-cell-size: 40px;
+}
+.table-view .column-header-background {
+    -fx-background-color: transparent !important;
+}
+.table-view .column-header {
+    -fx-padding: 6 0 6 0 6;
+    -fx-background-color: white !important;
+}
+.table-view .column-header .label {
+    -fx-background-color: transparent;
+    -fx-text-fill: #000;
+    -fx-font-size: 0px;
+    -fx-padding: 0 0 0 0;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: #eee;
+    -fx-border-width: 0 0 1 0;
+}
+.table-view .table-row-cell:selected {
+    -fx-background-color: #007AFF;
+    -fx-text-fill : white;
+    -fx-border-color: transparent;
+}
+
+.table-cell {
+    -fx-alignment: CENTER;
+    -fx-padding: 0 6 0 6;
+    -fx-font-size: 14px;
+    -fx-text-fill: black;
+}
+.table-view .table-row-cell:selected .table-cell {
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+}
+
+.table-view .table-cell {
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 12 0 12;
+    -fx-text-fill: #111;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.table-view .column-header .label {
+    -fx-background-color: transparent;
+    -fx-text-fill: #6B7280;
+    -fx-font-size: 14px;
+    -fx-font-family: "SF Pro Display Bold";
+    -fx-padding: 10 0 10 0;
+    -fx-alignment: CENTER_LEFT;      /* allinea il Label a sinistra */
+    -fx-text-alignment: left;        /* allinea il testo a sinistra */
+}
+
+.table-view .column-header-background {
+    -fx-background-color: white; /* barra header bianca */
+    -fx-border-color: #E5E5EA;
+    -fx-border-width: 0 0 1px 0; /* sottolineatura */
+}
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-padding: 8 12 8 12;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.table-exams .column-header {
+    -fx-background-color: transparent;
+    -fx-padding: 0 2 0 2;
+    -fx-alignment: CENTER_LEFT;
+}
+.table-exams .column-header .label {
+    -fx-background-color: transparent;
+    -fx-text-fill: #6B7280;
+    -fx-font-size: 1px;
+    -fx-font-family: "SF Pro Display Bold";
+    -fx-padding: 0 0 0 0;
+    -fx-alignment: CENTER_LEFT;
+    -fx-text-alignment: left;
+}
+
+.table-exams .column-header-background {
+    -fx-background-color: white;
+    -fx-border-color: #E5E5EA;
+    -fx-border-width: 0 0 0px 0;
+}
+.table-exams .column-header {
+    -fx-padding: 0 0 0 0;
+    -fx-background-color: white !important;
+}

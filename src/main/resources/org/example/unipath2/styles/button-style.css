@@ -1,0 +1,259 @@
+.button {
+    -fx-background-color: #e0e0e0;
+    -fx-text-fill: #2a2a2a;
+    -fx-background-radius: 12px;
+    -fx-padding: 8 14 8 14;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+    -fx-font-family: "SF Pro Display Medium";
+}
+
+.button:hover {
+    -fx-background-color: #007AFF;
+    -fx-text-fill: #FFF;
+    -fx-font-family: "SF Pro Display Medium";
+}
+
+.button:pressed {
+    -fx-background-color: #1566FF;
+    -fx-text-fill: #FFF;
+    -fx-font-family: "SF Pro Display Medium";
+}
+
+
+
+.menu-button{
+    -fx-background-color: #e0e0e0;
+    -fx-text-fill: #2a2a2a;
+    -fx-background-radius: 12px;
+    -fx-padding: 4 10 4 10;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+    -fx-font-family: "SF Pro Display Medium";
+}
+.menu-button:hover {
+    -fx-background-color: #007AFF;
+    -fx-text-fill: #FFF;
+    -fx-font-family: "SF Pro Display Medium";
+}
+
+.menu-button:pressed {
+    -fx-background-color: #1566FF;
+    -fx-text-fill: #FFF;
+    -fx-font-family: "SF Pro Display Medium";
+}
+
+.special{
+    -fx-background-color: #3153ff;
+        -fx-text-fill: #FFF;
+        -fx-cursor: hand;
+    -fx-font-size: 14px;
+    -fx-font-family: "SF Pro Display Medium";
+}
+.special:hover{
+-fx-background-color: #3153ff;
+    -fx-text-fill: #FFF;
+    -fx-effect: dropshadow(gaussian, rgba(49,83,255,0.5), 8, 0, 0, 4);
+}
+
+.choice-box {
+    -fx-background-color: #fff;
+    fx-text-fill: #2a2a2a;
+    -fx-background-radius: 10px;
+    -fx-font-size: 14px;
+    -fx-pref-height: 30px;
+    -fx-pref-width: 220px;
+    -fx-font-family: "SF Pro Display Medium";
+    -fx-padding: 4 10 4 10;
+    -fx-cursor: hand;
+    -fx-border-color: #d1d1d6;
+    -fx-border-radius: 10px;
+}
+
+.choice-box .arrow-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.choice-box:hover {
+    -fx-background-color: #007AFF;
+}
+
+.choice-box:pressed {
+    -fx-background-color: #007AFF;
+}
+
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #d1d1d6;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-font-size: 16px;
+    -fx-padding: 8 12 8 12;
+    -fx-text-fill: #111;
+    -fx-font-weight: normal;
+}
+
+.text-field:focused {
+    -fx-border-color: #007AFF;
+    -fx-border-width: 2px;
+}
+
+.date-picker {
+    -fx-background-color: white;
+    -fx-border-color: #d1d1d6;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #111;
+    -fx-font-weight: normal;
+}
+
+.date-picker:focused {
+    -fx-border-color: #007AFF;
+    -fx-border-width: 2px;
+}
+.date-picker .text-field {
+                  -fx-font-size: 14px;
+}
+.date-picker .text-field:focused {
+                  -fx-border-color: #d1d1d6;
+}
+.date-picker .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.date-picker .arrow-button .arrow {
+    -fx-background-color: #d1d1d1;
+}
+
+.label{
+    -fx-font-family: "SF Pro Display Medium";
+}
+
+.title{
+    -fx-font-family: "SF Pro Display Bold";
+    -fx-font-size: 36px;
+
+}
+
+.deleteButton{
+    -fx-text-fill: red;
+}
+
+
+
+.spinner {
+    -fx-background-color: #fff;        /* iOS grouped background */
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: rgba(60,60,67,0.25); /* subtle iOS separator */
+    -fx-border-width: 0.8;
+    -fx-padding: 3;
+}
+
+/* Text field */
+.spinner .text-field {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 10 14 10 14;
+    -fx-font-size: 15px;
+    -fx-font-weight: 500;
+    -fx-text-fill: #1c1c1e;               /* iOS primary text */
+    -fx-prompt-text-fill: #8e8e93;
+    -fx-alignment: center;
+}
+
+/* Focus ring (iOS blue glow) */
+.spinner:focused,
+.spinner:focused-within {
+    -fx-border-color: rgba(0,122,255,0.65);
+    -fx-border-width: 1.2;
+}
+
+/* Buttons container */
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0 8 0 8;
+}
+
+/* Remove ugly default shapes */
+.spinner .increment-arrow,
+.spinner .decrement-arrow {
+    -fx-scale-x: 0.85;
+    -fx-scale-y: 0.85;
+}
+
+/* Hover = soft highlight */
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    -fx-background-color: rgba(0,122,255,0.08);
+    -fx-background-radius: 12;
+}
+
+/* Pressed = subtle fill */
+.spinner .increment-arrow-button:pressed,
+.spinner .decrement-arrow-button:pressed {
+    -fx-background-color: rgba(0,122,255,0.18);
+}
+
+/* Height like iOS input */
+.spinner {
+    -fx-min-height: 42px;
+}
+.spinner .text-field {
+    -fx-min-height: 38px;
+}
+
+
+
+
+.slider {
+    -fx-padding: 14 0 14 0;
+}
+
+/* Track (background line) */
+.slider .track {
+    -fx-background-color: #e5e5ea;          /* iOS systemGray5 */
+    -fx-background-radius: 3;
+    -fx-pref-height: 6;
+}
+
+/* Filled track (left part) */
+.slider .filled-track {
+    -fx-background-color: #007aff;          /* iOS systemBlue */
+    -fx-background-radius: 3;
+}
+
+/* Thumb (the knob) */
+.slider .thumb {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-pref-width: 40;
+    -fx-pref-height: 25;
+
+    /* iOS-like floating shadow */
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(0, 0, 0, 0.18),
+        8,
+        0.35,
+        0,
+        2
+    );
+}
+
+/* Hover feedback */
+.slider .thumb:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+/* Pressed feedback */
+.slider .thumb:pressed {
+    -fx-scale-x: 1.4;
+    -fx-scale-y: 1.4;
+    -fx-background-color: rgba(0,122,255,0.9);
+}
+
