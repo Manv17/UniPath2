@@ -23,7 +23,7 @@ public final class CareerActions {
     public void editCourse(Career career, Course course,
                            CourseStatus newStatus, LocalDate newDate, Integer newGrade) {
 
-        if (newStatus == CourseStatus.DONE) {
+        if (newStatus == CourseStatus.SUPERATO) {
             course.setGrade(newGrade, newDate);
         } else {
             course.setGrade(null, newDate);

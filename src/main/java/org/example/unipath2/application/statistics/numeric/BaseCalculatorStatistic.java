@@ -1,4 +1,4 @@
-package org.example.unipath2.application.statistics.avg;
+package org.example.unipath2.application.statistics.numeric;
 
 import org.example.unipath2.domain.course.Course;
 

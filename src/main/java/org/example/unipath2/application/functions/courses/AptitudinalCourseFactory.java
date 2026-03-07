@@ -13,11 +13,11 @@ public class AptitudinalCourseFactory implements CourseFactory {
         AptitudinalCourse course;
         course = new AptitudinalCourse(name, cfu, year, semester);
 
-        if (status == CourseStatus.DONE && date == null) {
+        if (status == CourseStatus.SUPERATO && date == null) {
             throw new IllegalArgumentException("DONE requires a date");
         }
 
-        if (status == CourseStatus.DONE) {
+        if (status == CourseStatus.SUPERATO) {
             course.setPassed(true, date);
         } else if (date != null) {
             course.setDate(date);

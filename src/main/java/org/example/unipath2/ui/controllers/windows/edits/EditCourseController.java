@@ -75,7 +75,7 @@ public class EditCourseController extends WindowController {
         gradeLabel.setDisable(true);
 
         statusChoice.getSelectionModel().selectedItemProperty().addListener((obs, oldS, newS) -> {
-            boolean done = (newS == CourseStatus.DONE);
+            boolean done = (newS == CourseStatus.SUPERATO);
             gradeChoice.setDisable(!done);
             gradeLabel.setDisable(!done);
             if (!done) {
@@ -95,7 +95,7 @@ public class EditCourseController extends WindowController {
         CourseStatus st = course.getStatus();
         statusChoice.getSelectionModel().select(st);
 
-        boolean done = (st == CourseStatus.DONE);
+        boolean done = (st == CourseStatus.SUPERATO);
         gradeChoice.setDisable(!done);
 
         if (done) {
@@ -130,11 +130,15 @@ public class EditCourseController extends WindowController {
 
         validator.validateNotNull(status, statusChoice);
 
-        if (status == CourseStatus.DONE ){
+        if (status == CourseStatus.SUPERATO ){
             validator.validateNotNull(grade, gradeChoice)
                     .validateNotNull(date, datePicker);
         }
 
         return validator.isValid();
+    }
+
+    public void clearDate(ActionEvent event) {
+        datePicker.setValue(null);
     }
 }

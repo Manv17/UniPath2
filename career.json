@@ -1,5 +1,176 @@
 {
-  "courses" : [ ],
-  "degreeType" : "BACHELOR",
+  "courses" : [ {
+    "name" : "Economia Aziendale",
+    "cfu" : 5,
+    "year" : 1,
+    "semester" : "SECONDO",
+    "status" : "SUPERATO",
+    "grade" : 28,
+    "date" : [ 2024, 7, 18 ],
+    "type" : "GRADED"
+  }, {
+    "name" : "Fondamenti di Informatica",
+    "cfu" : 9,
+    "year" : 1,
+    "semester" : "PRIMO",
+    "status" : "SUPERATO",
+    "grade" : 21,
+    "date" : [ 2024, 1, 22 ],
+    "type" : "GRADED"
+  }, {
+    "name" : "Geometria",
+    "cfu" : 9,
+    "year" : 1,
+    "semester" : "PRIMO",
+    "status" : "SUPERATO",
+    "grade" : 27,
+    "date" : [ 2024, 9, 11 ],
+    "type" : "GRADED"
+  }, {
+    "name" : "Strutture Dati e Algoritmi",
+    "cfu" : 9,
+    "year" : 1,
+    "semester" : "SECONDO",
+    "status" : "SUPERATO",
+    "grade" : 22,
+    "date" : [ 2024, 9, 10 ],
+    "type" : "GRADED"
+  }, {
+    "name" : "Basi di Dati",
+    "cfu" : 9,
+    "year" : 2,
+    "semester" : "PRIMO",
+    "status" : "SUPERATO",
+    "grade" : 23,
+    "date" : [ 2025, 2, 21 ],
+    "type" : "GRADED"
+  }, {
+    "name" : "Controlli Automatici",
+    "cfu" : 9,
+    "year" : 2,
+    "semester" : "PRIMO",
+    "status" : "SUPERATO",
+    "grade" : 20,
+    "date" : [ 2025, 1, 9 ],
+    "type" : "GRADED"
+  }, {
+    "name" : "Elettronica Digitale",
+    "cfu" : 9,
+    "year" : 2,
+    "semester" : "SECONDO",
+    "status" : "SUPERATO",
+    "grade" : 19,
+    "date" : [ 2025, 7, 21 ],
+    "type" : "GRADED"
+  }, {
+    "name" : "Fisica Generale",
+    "cfu" : 9,
+    "year" : 2,
+    "semester" : "PRIMO",
+    "status" : "SUPERATO",
+    "grade" : 23,
+    "date" : [ 2025, 1, 10 ],
+    "type" : "GRADED"
+  }, {
+    "name" : "Programmazione Oggetti",
+    "cfu" : 6,
+    "year" : 2,
+    "semester" : "SECONDO",
+    "status" : "SUPERATO",
+    "grade" : 29,
+    "date" : [ 2025, 9, 8 ],
+    "type" : "GRADED"
+  }, {
+    "name" : "Ricerca Operativa",
+    "cfu" : 6,
+    "year" : 2,
+    "semester" : "SECONDO",
+    "status" : "SUPERATO",
+    "grade" : 28,
+    "date" : [ 2025, 9, 5 ],
+    "type" : "GRADED"
+  }, {
+    "name" : "Sistemi Operativi",
+    "cfu" : 9,
+    "year" : 2,
+    "semester" : "SECONDO",
+    "status" : "SUPERATO",
+    "grade" : 25,
+    "date" : [ 2025, 7, 9 ],
+    "type" : "GRADED"
+  }, {
+    "name" : "Architettura di Calcolatori",
+    "cfu" : 9,
+    "year" : 3,
+    "semester" : "PRIMO",
+    "status" : "SUPERATO",
+    "grade" : 28,
+    "date" : [ 2025, 12, 23 ],
+    "type" : "GRADED"
+  }, {
+    "name" : "Fondamenti di Telecomunicazioni",
+    "cfu" : 9,
+    "year" : 3,
+    "semester" : "PRIMO",
+    "status" : "SUPERATO",
+    "grade" : 28,
+    "date" : [ 2026, 2, 12 ],
+    "type" : "GRADED"
+  }, {
+    "name" : "Ingegneria del Software",
+    "cfu" : 9,
+    "year" : 3,
+    "semester" : "PRIMO",
+    "status" : "SUPERATO",
+    "grade" : 25,
+    "date" : [ 2026, 1, 29 ],
+    "type" : "GRADED"
+  }, {
+    "name" : "Analisi I",
+    "cfu" : 9,
+    "year" : 1,
+    "semester" : "PRIMO",
+    "status" : "PIANIFICATO",
+    "grade" : null,
+    "date" : [ 2026, 3, 28 ],
+    "type" : "GRADED"
+  }, {
+    "name" : "Analisi II",
+    "cfu" : 8,
+    "year" : 1,
+    "semester" : "SECONDO",
+    "status" : "DA_FARE",
+    "grade" : null,
+    "date" : null,
+    "type" : "GRADED"
+  }, {
+    "name" : "Statistica",
+    "cfu" : 5,
+    "year" : 1,
+    "semester" : "SECONDO",
+    "status" : "DA_FARE",
+    "grade" : null,
+    "date" : null,
+    "type" : "GRADED"
+  }, {
+    "name" : "Inglese B1",
+    "cfu" : 3,
+    "year" : 1,
+    "semester" : "I",
+    "status" : "SUPERATO",
+    "grade" : null,
+    "date" : [ 2025, 2, 14 ],
+    "type" : "APTITUDINAL"
+  }, {
+    "name" : "Inglese B2",
+    "cfu" : 3,
+    "year" : 3,
+    "semester" : "I",
+    "status" : "SUPERATO",
+    "grade" : null,
+    "date" : [ 2026, 2, 2 ],
+    "type" : "APTITUDINAL"
+  } ],
+  "degreeType" : "TRIENNALE",
   "total_CFU" : 180.0
 }

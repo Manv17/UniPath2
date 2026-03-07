@@ -11,19 +11,19 @@ module org.example.unipath2 {
     opens org.example.unipath2.domain.career to javafx.fxml, com.fasterxml.jackson.databind;
 
     opens org.example.unipath2.application.statistics to javafx.fxml;
-    opens org.example.unipath2.application.statistics.avg to javafx.fxml;
+    opens org.example.unipath2.application.statistics.numeric to javafx.fxml;
 
     exports org.example.unipath2.domain.enums;
     exports org.example.unipath2.application.exception;
     exports org.example.unipath2.application.statistics;
-    exports org.example.unipath2.application.statistics.avg;
+    exports org.example.unipath2.application.statistics.numeric;
     exports org.example.unipath2.ui.controllers;
     exports org.example.unipath2.domain.career;
     exports org.example.unipath2.infrastructure;
     exports org.example.unipath2.application.statistics.minmax;
     opens org.example.unipath2.application.statistics.minmax to javafx.fxml;
-    exports org.example.unipath2.application.statistics.latest;
-    opens org.example.unipath2.application.statistics.latest to javafx.fxml;
+    exports org.example.unipath2.application.statistics.courseList;
+    opens org.example.unipath2.application.statistics.courseList to javafx.fxml;
     exports org.example.unipath2.ui.controllers.pages;
     opens org.example.unipath2.ui.controllers.pages to javafx.fxml;
     exports org.example.unipath2.ui.controllers.windows;

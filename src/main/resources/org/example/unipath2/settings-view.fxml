@@ -28,17 +28,17 @@
       </VBox>
       <VBox spacing="2.0">
          <children>
-            <Label text="Seleziona il tuo tipo di laurea">
+            <Label text="Seleziona il tuo tipo di laurea:">
                <font>
                   <Font name="SF Pro Display Regular" size="14.0" />
                </font>
             </Label>
-            <Label text="- Triennale: Bachelor (180 Cfu)">
+            <Label text="- Triennale (180 Cfu)">
                <font>
                   <Font name="SF Pro Display Regular" size="14.0" />
                </font>
             </Label>
-            <Label text="- Magistrale: Master (120 Cfu)">
+            <Label text="- Magistrale (120 Cfu)">
                <font>
                   <Font name="SF Pro Display Regular" size="14.0" />
                </font>

@@ -18,7 +18,7 @@ public class GradedCourseFactory implements CourseFactory {
         Course course;
         course = new Course(name, cfu, year, semester);
 
-        if (status == CourseStatus.DONE) {
+        if (status == CourseStatus.SUPERATO) {
             if (grade == null || date == null) {
                 throw new IllegalArgumentException("DONE requires grade and date");
             }

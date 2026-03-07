@@ -15,7 +15,7 @@ public class Career implements Subject {
     @JsonIgnore
     private int TOTAL_CFU;
 
-    private DegreeType degreeType = DegreeType.BACHELOR;
+    private DegreeType degreeType = DegreeType.TRIENNALE;
 
     public Career() {
         this.courses = new ArrayList<>();
@@ -74,12 +74,12 @@ public class Career implements Subject {
     }
 
     public DegreeType getDegreeType() {
-        return degreeType != null ? degreeType : DegreeType.BACHELOR;
+        return degreeType != null ? degreeType : DegreeType.TRIENNALE;
     }
 
     public void setDegreeType(DegreeType degreeType) {
-        this.degreeType = (degreeType != null) ? degreeType : DegreeType.BACHELOR;
-        if (degreeType == DegreeType.BACHELOR) {
+        this.degreeType = (degreeType != null) ? degreeType : DegreeType.TRIENNALE;
+        if (degreeType == DegreeType.TRIENNALE) {
             setTOTAL_CFU(180);
         } else {
             setTOTAL_CFU(120);

@@ -1,6 +1,6 @@
 
 .chart-pie.data0 { /* Passati */
-    -fx-pie-color: rgb(48, 209,88);
+    -fx-pie-color: #20b2aa;
 }
 .chart-pie.data1 { /* Da fare */
     -fx-pie-color: rgb(199, 199, 204);

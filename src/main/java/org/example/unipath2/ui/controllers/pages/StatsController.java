@@ -10,7 +10,7 @@ import org.example.unipath2.domain.career.Observer;
 import org.example.unipath2.ui.controllers.BaseController;
 import org.example.unipath2.domain.course.Course;
 import org.example.unipath2.application.statistics.Statistic;
-import org.example.unipath2.application.statistics.avg.AvgStatistic;
+import org.example.unipath2.application.statistics.numeric.AvgStatistic;
 import org.example.unipath2.application.statistics.minmax.CourseStrategy;
 import org.example.unipath2.application.statistics.minmax.MaxStatistic;
 import org.example.unipath2.application.statistics.minmax.MinStatistic;
@@ -126,6 +126,7 @@ public class StatsController extends BaseController implements Observer {
         xAxis.setOpacity(1);
     }
 
+    @FXML
     public void handleHomeButton(ActionEvent event) {
         switchTab("/org/example/unipath2/home-view.fxml", event);
     }
@@ -134,4 +135,10 @@ public class StatsController extends BaseController implements Observer {
     public void handleLibrettoButton(ActionEvent event) {
         switchTab("/org/example/unipath2/libretto-view.fxml", event);
     }
+
+    @FXML
+    public void handleSettingsButton(ActionEvent event) {
+        openWindow("/org/example/unipath2/settings-view.fxml");
+    }
+
 }

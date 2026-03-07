@@ -74,25 +74,25 @@ public class Course {
 
     public void setStatusFromGrade(Integer grade) {
         if (grade != null && grade >= 18) {
-            this.status = CourseStatus.DONE;
+            this.status = CourseStatus.SUPERATO;
         } else {
-            this.status = CourseStatus.TO_DO;
+            this.status = CourseStatus.DA_FARE;
         }
     }
 
     @JsonIgnore
     public boolean isPassed() {
-        return status.equals(CourseStatus.DONE);
+        return status.equals(CourseStatus.SUPERATO);
     }
 
     @JsonIgnore
     public boolean isPlanned() {
-        return status.equals(CourseStatus.PLANNED);
+        return status.equals(CourseStatus.PIANIFICATO);
     }
 
     @JsonIgnore
     public boolean isToDo() {
-        return status.equals(CourseStatus.TO_DO);
+        return status.equals(CourseStatus.DA_FARE);
     }
 
     public CourseType getType() {

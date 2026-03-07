@@ -4,7 +4,7 @@ import javafx.scene.paint.Color;
 
 public enum Colors {
     PRIMARY(Color.web("#1566FF")),  // AVG
-    CFU(Color.LIGHTSEAGREEN),
+    CFU(Color.web("#20b2aa")),
     BASE(Color.DARKRED),
     IMPROVEMENT(Color.rgb(48, 209,88).darker()),
     SETBACK(Color.RED),

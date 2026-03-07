@@ -77,12 +77,12 @@ public class AddCourseController extends WindowController {
 
     private void initializeSemesterChoice() {
         semesterChoice.getItems().addAll(CourseSemester.values());
-        semesterChoice.getSelectionModel().select(CourseSemester.FIRST);
+        semesterChoice.getSelectionModel().select(CourseSemester.PRIMO);
     }
 
     private void initializeStatusGradeChoice() {
         statusChoice.getItems().addAll(CourseStatus.values());
-        statusChoice.getSelectionModel().select(CourseStatus.TO_DO);
+        statusChoice.getSelectionModel().select(CourseStatus.DA_FARE);
 
         for (int i = 18; i <= 30; i++) {
             gradeChoice.getItems().add(i);
@@ -91,7 +91,7 @@ public class AddCourseController extends WindowController {
         gradeLabel.setDisable(true);
 
         statusChoice.getSelectionModel().selectedItemProperty().addListener((obs, oldS, newS) -> {
-            boolean done = (newS == CourseStatus.DONE);
+            boolean done = (newS == CourseStatus.SUPERATO);
             gradeChoice.setDisable(!done);
             gradeLabel.setDisable(!done);
             if (!done) {
@@ -164,7 +164,7 @@ public class AddCourseController extends WindowController {
                 .validateNotNull(semester, semesterChoice)
                 .validateNotNull(courseStatus, statusChoice);
 
-        if (courseStatus == CourseStatus.DONE) {
+        if (courseStatus == CourseStatus.SUPERATO) {
             validator.validateNotNull(grade, gradeChoice)
                     .validateNotNull(date, datePicker);
         }

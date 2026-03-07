@@ -1,9 +1,9 @@
 package org.example.unipath2.ui.rings.ringFactory;
 
 import org.example.unipath2.domain.enums.Colors;
-import org.example.unipath2.application.statistics.avg.NumericStrategy;
+import org.example.unipath2.application.statistics.numeric.NumericStrategy;
 import org.example.unipath2.application.statistics.Statistic;
-import org.example.unipath2.application.statistics.avg.BaseCalculatorStatistic;
+import org.example.unipath2.application.statistics.numeric.BaseCalculatorStatistic;
 import org.example.unipath2.ui.rings.RingCard;
 
 public class BaseRingFactory implements RingFactory {

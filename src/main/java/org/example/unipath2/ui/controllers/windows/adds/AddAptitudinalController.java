@@ -56,7 +56,7 @@ public class AddAptitudinalController extends WindowController {
 
     private void initializeStatusPassedChoice() {
         statusChoice.getItems().addAll(CourseStatus.values());
-        statusChoice.getSelectionModel().select(CourseStatus.TO_DO);
+        statusChoice.getSelectionModel().select(CourseStatus.DA_FARE);
     }
 
     private void initializeYearChoice() {
@@ -94,7 +94,7 @@ public class AddAptitudinalController extends WindowController {
                 .validateNotNull(year, yearChoice)
                 .validateNotNull(courseStatus, statusChoice);
 
-        if (courseStatus == CourseStatus.DONE) {
+        if (courseStatus == CourseStatus.SUPERATO) {
             validator.validateNotNull(date, datePicker);
         }
 

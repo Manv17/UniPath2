@@ -146,6 +146,11 @@ public class LibrettoController extends BaseController implements Observer {
     @FXML
     public void handleAddAptitudinalCourse(ActionEvent event) {
         openWindow("/org/example/unipath2/addAptitudinal-view.fxml");
-
     }
+
+    @FXML
+    public void handleSettingsButton(ActionEvent event) {
+        openWindow("/org/example/unipath2/settings-view.fxml");
+    }
+
 }

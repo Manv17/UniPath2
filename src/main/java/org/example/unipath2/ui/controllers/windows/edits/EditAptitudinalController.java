@@ -85,7 +85,7 @@ public class EditAptitudinalController extends WindowController {
         FormValidator validator = new FormValidator();
         validator.validateNotNull(status, statusChoice);
 
-        if (status.equals(CourseStatus.DONE)){
+        if (status.equals(CourseStatus.SUPERATO)){
             validator.validateNotNull(date, datePicker);
         }
 
@@ -104,7 +104,7 @@ public class EditAptitudinalController extends WindowController {
             return;
         }
 
-        course.setPassed(newStatus == CourseStatus.DONE, newDate);
+        course.setPassed(newStatus == CourseStatus.SUPERATO, newDate);
 
         course.setStatus(newStatus);
         course.setDate(newDate);
@@ -116,5 +116,9 @@ public class EditAptitudinalController extends WindowController {
             librettoController.refreshUI();
 
         closePage(event);
+    }
+
+    public void clearDate(ActionEvent event) {
+        datePicker.setValue(null);
     }
 }

@@ -1,25 +1,32 @@
 package org.example.unipath2.ui.controllers.pages;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.chart.*;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import org.example.unipath2.application.statistics.courseList.NextExamsStatistic;
 import org.example.unipath2.domain.career.Observer;
 import org.example.unipath2.ui.controllers.BaseController;
 import org.example.unipath2.domain.course.Course;
 import org.example.unipath2.application.statistics.Statistic;
-import org.example.unipath2.application.statistics.latest.LatestPassedStatistic;
-import org.example.unipath2.application.statistics.latest.ListCourseStrategy;
+import org.example.unipath2.application.statistics.courseList.LatestPassedStatistic;
+import org.example.unipath2.application.statistics.courseList.ListCourseStrategy;
 import org.example.unipath2.ui.rings.ringFactory.BaseRingFactory;
 import org.example.unipath2.ui.rings.ringFactory.CfuRingFactory;
 import org.example.unipath2.ui.rings.ringFactory.RingFactory;
 import org.example.unipath2.ui.rings.ringFactory.WeightedAvgRingFactory;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -55,6 +62,14 @@ public class HomeController extends BaseController implements Observer {
     @FXML
     public NumberAxis yAvgChart;
 
+    @FXML
+    public TableView<Course> nextTable;
+    @FXML
+    public TableColumn<Course, String> next_examColumn;
+    @FXML
+    public TableColumn<Course, String> next_dateColumn;
+
+    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd MMMM");
 
     @Override
     public void onContextSet() {
@@ -70,6 +85,7 @@ public class HomeController extends BaseController implements Observer {
         updateLatestTable();
         updatePieChart();
         updateAvgChart();
+        updateNextTable();
     }
 
     private void updateRing(StackPane container, RingFactory factory) {
@@ -77,6 +93,8 @@ public class HomeController extends BaseController implements Observer {
     }
 
     private void updateLatestTable() {
+        setTableLabel("😐", "Nessun esame sostenuto", latestTable);
+
         ListCourseStrategy listCourseStrategy = new LatestPassedStatistic();
         latestTable.setItems(FXCollections.observableList(listCourseStrategy.compute(statistic.getValidPassedCourse())));
 
@@ -86,6 +104,37 @@ public class HomeController extends BaseController implements Observer {
         latest_gradeColumn.setCellValueFactory(c ->
                 new ReadOnlyObjectWrapper<>(c.getValue().getGrade()) {
                 });
+    }
+
+    private void updateNextTable() {
+        setTableLabel("📚", "Nessun esame pianificato", nextTable);
+
+        ListCourseStrategy listCourseStrategy = new NextExamsStatistic();
+        nextTable.setItems(FXCollections.observableList(listCourseStrategy.compute(career.getCourses())));
+
+        next_examColumn.setCellValueFactory(c ->
+                new ReadOnlyObjectWrapper<>(c.getValue().getName()));
+
+        next_dateColumn.setCellValueFactory(cellData -> {
+                    LocalDate date = cellData.getValue().getDate();
+                    return new SimpleStringProperty(date != null ? dateTimeFormatter.format(date) : "");
+                }
+        );
+    }
+
+    private void setTableLabel(String icon, String text, TableView<Course> table) {
+        VBox placeholder = new VBox(10);
+        placeholder.setAlignment(Pos.CENTER);
+
+        Label iconLabel = new Label(icon);
+        iconLabel.setStyle("-fx-font-size: 18px;");
+
+        Label textLabel = new Label(text);
+        textLabel.setStyle("-fx-textLabel-fill: gray;");
+
+        placeholder.getChildren().addAll(iconLabel, textLabel);
+
+        table.setPlaceholder(placeholder);
     }
 
     private void updatePieChart() {

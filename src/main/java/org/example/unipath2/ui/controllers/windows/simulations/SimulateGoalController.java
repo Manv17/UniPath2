@@ -2,12 +2,11 @@ package org.example.unipath2.ui.controllers.windows.simulations;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import org.example.unipath2.application.statistics.Statistic;
-import org.example.unipath2.application.statistics.avg.NumericStrategy;
-import org.example.unipath2.application.statistics.avg.WeightedAvgStatistic;
+import org.example.unipath2.application.statistics.numeric.NumericStrategy;
+import org.example.unipath2.application.statistics.numeric.WeightedAvgStatistic;
 import org.example.unipath2.ui.controllers.BaseController;
 
 public class SimulateGoalController extends BaseController {

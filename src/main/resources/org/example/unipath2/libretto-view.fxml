@@ -8,6 +8,8 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
@@ -26,18 +28,60 @@
         </BorderPane>
         <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0">
             <left>
-                <VBox alignment="TOP_CENTER" prefHeight="720.0" prefWidth="200.0" spacing="20.0" style="-fx-background-color: f1f1f1;" stylesheets="@styles/sideBar-style.css" BorderPane.alignment="CENTER">
+                <VBox alignment="TOP_CENTER" prefHeight="720.0" prefWidth="200.0" spacing="200.0" style="-fx-background-color: f1f1f1;" stylesheets="@styles/sideBar-style.css" BorderPane.alignment="CENTER">
                     <children>
-                  <VBox spacing="20.0">
+                  <VBox alignment="TOP_CENTER" spacing="40.0">
                      <children>
-                              <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" minWidth="0.0" mnemonicParsing="false" onAction="#handleHomeButton" styleClass="sideBar-Button" text="Home" />
-                              <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" minWidth="150.0" mnemonicParsing="false" styleClass="sideBar-Button-selected" text="Libretto" />
-                              <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" minWidth="0.0" mnemonicParsing="false" onAction="#handleStatsButton" styleClass="sideBar-Button" text="Statistiche" />
+                        <Label text="UniPath">
+                           <font>
+                              <Font name="SF Pro Display Heavy Italic" size="24.0" />
+                           </font>
+                        </Label>
+                        <VBox spacing="20.0">
+                           <children>
+                                    <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" minWidth="0.0" mnemonicParsing="false" onAction="#handleHomeButton" styleClass="sideBar-Button" text="Home">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/house.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
+                                    <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" minWidth="150.0" mnemonicParsing="false" styleClass="sideBar-Button-selected" text="Libretto">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/book.pages-active.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
+                                    <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" minWidth="0.0" mnemonicParsing="false" onAction="#handleStatsButton" styleClass="sideBar-Button" text="Statistiche">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/chart.line.text.clipboard.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button id="settingsButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleSettingsButton" styleClass="settingsButton" stylesheets="@styles/sideBar-style.css" text="Impostazioni">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/gear.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                      </children>
                   </VBox>
                     </children>
                     <padding>
-                        <Insets left="20.0" right="20.0" top="70.0" />
+                        <Insets left="20.0" right="20.0" top="40.0" />
                     </padding>
                 </VBox>
             </left>

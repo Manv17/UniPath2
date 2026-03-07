@@ -6,9 +6,9 @@ import javafx.scene.control.Label;
 import org.example.unipath2.ui.controllers.BaseController;
 import org.example.unipath2.domain.enums.Colors;
 import org.example.unipath2.application.statistics.Statistic;
-import org.example.unipath2.application.statistics.avg.BaseCalculatorStatistic;
-import org.example.unipath2.application.statistics.avg.NumericStrategy;
-import org.example.unipath2.application.statistics.avg.WeightedAvgStatistic;
+import org.example.unipath2.application.statistics.numeric.BaseCalculatorStatistic;
+import org.example.unipath2.application.statistics.numeric.NumericStrategy;
+import org.example.unipath2.application.statistics.numeric.WeightedAvgStatistic;
 
 public class SimulateController extends BaseController {
 

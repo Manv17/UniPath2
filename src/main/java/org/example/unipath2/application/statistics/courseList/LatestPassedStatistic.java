@@ -1,4 +1,4 @@
-package org.example.unipath2.application.statistics.latest;
+package org.example.unipath2.application.statistics.courseList;
 
 import org.example.unipath2.domain.course.Course;
 

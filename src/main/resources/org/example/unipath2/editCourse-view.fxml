@@ -52,12 +52,17 @@
                      </font>
                   </Label>
                   <DatePicker fx:id="datePicker" />
+                  <Button mnemonicParsing="false" onAction="#clearDate" styleClass="clear-button" stylesheets="@styles/button-style.css" text="Cancella data" underline="true">
+                     <font>
+                        <Font name="SF Pro Display Regular" size="13.0" />
+                     </font>
+                  </Button>
                </children>
             </VBox>
             <ButtonBar maxHeight="1.7976931348623157E308" prefHeight="40.0" prefWidth="200.0">
               <buttons>
-                <Button mnemonicParsing="false" onAction="#handleUndoButton" text="Annulla" />
-                  <Button mnemonicParsing="false" onAction="#handleEditButton" text="Modifica" />
+                <Button mnemonicParsing="false" onAction="#handleUndoButton" prefWidth="100.0" text="Annulla" />
+                  <Button mnemonicParsing="false" onAction="#handleEditButton" prefWidth="100.0" text="Modifica" />
               </buttons>
             </ButtonBar>
          </children>

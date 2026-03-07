@@ -25,9 +25,9 @@ public class AptitudinalCourse extends Course {
         setType(CourseType.APTITUDINAL);
 
         if (Boolean.TRUE.equals(passed)) {
-            setStatus(CourseStatus.DONE);
+            setStatus(CourseStatus.SUPERATO);
         } else {
-            setStatus(CourseStatus.TO_DO);
+            setStatus(CourseStatus.DA_FARE);
         }
     }
 
