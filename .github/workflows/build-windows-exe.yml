@@ -1,36 +1,30 @@
-name: Build installers
+name: Build and Release Installers
 
 on:
-  push:
-    branches: [ "main" ]
-  workflow_dispatch:
+  release:
+    types: [created]
 
 jobs:
+
   build-windows:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Java 21
-        uses: actions/setup-java@v4
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
           cache: maven
 
-      - name: Build with Maven
+      - name: Build project
         run: mvn -B clean package
 
-      - name: Create runtime image with JavaFX
+      - name: Create runtime image
         run: mvn javafx:jlink
 
-      - name: Show target folder
-        shell: pwsh
-        run: Get-ChildItem -Recurse target
-
-      - name: Create EXE
+      - name: Create EXE installer
         shell: pwsh
         run: |
           jpackage `
@@ -40,38 +34,33 @@ jobs:
             --main-jar UniPath2-1.0-SNAPSHOT.jar `
             --main-class org.example.unipath2.ui.Home `
             --runtime-image target/app `
+            --icon src/main/resources/org/example/unipath2/Icons/app-icon.ico `
             --dest dist
 
-      - name: Upload Windows artifact
-        uses: actions/upload-artifact@v4
+      - name: Upload EXE to release
+        uses: softprops/action-gh-release@v2
         with:
-          name: UniPath2-windows
-          path: dist/*
+          files: dist/*.exe
 
   build-macos:
     runs-on: macos-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Java 21
-        uses: actions/setup-java@v4
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
           cache: maven
 
-      - name: Build with Maven
+      - name: Build project
         run: mvn -B clean package
 
-      - name: Create runtime image with JavaFX
+      - name: Create runtime image
         run: mvn javafx:jlink
 
-      - name: Show target folder
-        run: ls -R target
-
-      - name: Create DMG
+      - name: Create DMG installer
         run: |
           jpackage \
             --type dmg \
@@ -80,10 +69,10 @@ jobs:
             --main-jar UniPath2-1.0-SNAPSHOT.jar \
             --main-class org.example.unipath2.ui.Home \
             --runtime-image target/app \
+            --icon src/main/resources/org/example/unipath2/Icons/app-icon.icns \
             --dest dist
 
-      - name: Upload macOS artifact
-        uses: actions/upload-artifact@v4
+      - name: Upload DMG to release
+        uses: softprops/action-gh-release@v2
         with:
-          name: UniPath2-macos
-          path: dist/*
+          files: dist/*.dmg
