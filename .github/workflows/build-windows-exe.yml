@@ -1,0 +1,67 @@
+name: Build installers
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - run: mvn -B clean package
+
+      - name: Create EXE
+        shell: pwsh
+        run: |
+          jpackage `
+            --type exe `
+            --name UniPath2 `
+            --input target `
+            --main-jar UniPath2-1.0-SNAPSHOT.jar `
+            --main-class org.example.unipath2.ui.Home `
+            --dest dist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: UniPath2-windows
+          path: dist/*
+
+  build-macos:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - run: mvn -B clean package
+
+      - name: Create DMG
+        run: |
+          jpackage \
+            --type dmg \
+            --name UniPath2 \
+            --input target \
+            --main-jar UniPath2-1.0-SNAPSHOT.jar \
+            --main-class org.example.unipath2.ui.Home \
+            --dest dist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: UniPath2-macos
+          path: dist/*
