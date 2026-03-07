@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.unipath2.ui.controllers.windows.edits.EditAptitudinalController">
    <children>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="600.0" spacing="30.0" style="-fx-background-color: fff;" stylesheets="@styles/button-style.css">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="600.0" spacing="30.0" style="-fx-background-color: fff;" stylesheets="@../../styles/button-style.css">
          <children>
             <Label fx:id="nameLabel" contentDisplay="CENTER" graphicTextGap="10.0" prefWidth="700.0" styleClass="title" text="Name">
                <font>
@@ -44,7 +44,7 @@
                            </font>
                         </Label>
                         <DatePicker fx:id="datePicker" />
-                        <Button mnemonicParsing="false" onAction="#clearDate" styleClass="clear-button" stylesheets="@styles/button-style.css" text="Cancella data" underline="true" />
+                        <Button mnemonicParsing="false" onAction="#clearDate" styleClass="clear-button" stylesheets="@../../styles/button-style.css" text="Cancella data" underline="true" />
                      </children>
                   </VBox>
                </children>

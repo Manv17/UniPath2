@@ -84,7 +84,7 @@ public class SimulateGoalController extends BaseController {
 
     private double getReqAvg(double target, double remainingCfu) {
         NumericStrategy wAvgStrategy = new WeightedAvgStatistic();
-        double wAvg = wAvgStrategy.compute(statistic.getValidPassedCourse());
+        double wAvg = wAvgStrategy.compute(statistic.getValidPassedCourse(), statistic);
         double totalCfu = statistic.getTotalCfu();
         double earnedCfu = statistic.getEarnedCFU();
 
@@ -104,7 +104,7 @@ public class SimulateGoalController extends BaseController {
             return 30.0;
         }
 
-        double wAvg = wAvgStrategy.compute(statistic.getValidPassedCourse());
+        double wAvg = wAvgStrategy.compute(statistic.getValidPassedCourse(), statistic);
 
         return (wAvg * earnedCfu + 30.0 * remainingCfu) / statistic.getTotalCfu();
     }
@@ -119,7 +119,7 @@ public class SimulateGoalController extends BaseController {
             return 18.0;
         }
 
-        double wAvg = wAvgStrategy.compute(statistic.getValidPassedCourse());
+        double wAvg = wAvgStrategy.compute(statistic.getValidPassedCourse(), statistic);
 
         return (wAvg * earnedCfu + 18.0 * remainingCfu)
                 / (earnedCfu + remainingCfu);

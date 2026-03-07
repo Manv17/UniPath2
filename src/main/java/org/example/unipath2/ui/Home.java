@@ -23,7 +23,7 @@ public class Home extends Application {
         Career career = actions.load();
 
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/org/example/unipath2/home-view.fxml")
+                getClass().getResource("/org/example/unipath2/views/pages/home-view.fxml")
         );
         Parent root = loader.load();
 

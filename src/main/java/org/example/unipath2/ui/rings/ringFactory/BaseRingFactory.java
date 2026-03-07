@@ -11,7 +11,7 @@ public class BaseRingFactory implements RingFactory {
 
     @Override
     public RingCard createRingCard(Statistic statistic, int diameter) {
-        double base = numericStrategy.compute(statistic.getValidPassedCourse());
+        double base = numericStrategy.compute(statistic.getValidPassedCourse(), statistic);
         String label = "/ " + (int) statistic.getMaxBase();
         double progress = base / statistic.getMaxBase();
 

@@ -27,7 +27,7 @@
       </BorderPane>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0">
          <left>
-            <VBox alignment="TOP_CENTER" prefHeight="720.0" prefWidth="200.0" spacing="200.0" style="-fx-background-color: f1f1f1;" stylesheets="@styles/sideBar-style.css" BorderPane.alignment="CENTER">
+            <VBox alignment="TOP_CENTER" prefHeight="720.0" prefWidth="200.0" spacing="200.0" style="-fx-background-color: f1f1f1;" stylesheets="@../../styles/sideBar-style.css" BorderPane.alignment="CENTER">
                <children>
                   <VBox alignment="TOP_CENTER" spacing="40.0">
                      <children>
@@ -42,7 +42,7 @@
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Icons/house.png" />
+                                          <Image url="@../../Icons/house.png" />
                                        </image>
                                     </ImageView>
                                  </graphic></Button>
@@ -50,7 +50,7 @@
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Icons/book.pages.png" />
+                                          <Image url="@../../Icons/book.pages.png" />
                                        </image>
                                     </ImageView>
                                  </graphic></Button>
@@ -58,7 +58,7 @@
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Icons/chart.line.text.clipboard-active.png" />
+                                          <Image url="@../../Icons/chart.line.text.clipboard-active.png" />
                                        </image>
                                     </ImageView>
                                  </graphic></Button>
@@ -68,11 +68,11 @@
                   </VBox>
                   <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button id="settingsButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleSettingsButton" styleClass="settingsButton" stylesheets="@styles/sideBar-style.css" text="Impostazioni">
+                        <Button id="settingsButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleSettingsButton" styleClass="settingsButton" stylesheets="@../../styles/sideBar-style.css" text="Impostazioni">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@Icons/gear.png" />
+                                    <Image url="@../../Icons/gear.png" />
                                  </image>
                               </ImageView>
                            </graphic></Button>
@@ -260,7 +260,7 @@
                               </HBox>
                            </children>
                         </HBox>
-                        <HBox prefHeight="360.0" prefWidth="1000.0" spacing="20.0" stylesheets="@styles/graph-style.css">
+                        <HBox prefHeight="360.0" prefWidth="1000.0" spacing="20.0" stylesheets="@../../styles/graph-style.css">
                            <children>
                               <VBox spacing="6.0" style="-fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
                                  <children>

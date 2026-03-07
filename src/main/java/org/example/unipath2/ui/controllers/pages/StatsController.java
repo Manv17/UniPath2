@@ -50,7 +50,7 @@ public class StatsController extends BaseController implements Observer {
     @Override
     public void refreshUI() {
         AvgStatistic avgStatistic = new AvgStatistic();
-        double avg = avgStatistic.compute(statistic.getValidPassedCourse());
+        double avg = avgStatistic.compute(statistic.getValidPassedCourse(), statistic);
         avgLabel.setText(String.format(String.valueOf(avg), "%.0f"));
 
         careerProgressLabel.setText(statistic.getCfuProgressText() + "%");
@@ -128,17 +128,17 @@ public class StatsController extends BaseController implements Observer {
 
     @FXML
     public void handleHomeButton(ActionEvent event) {
-        switchTab("/org/example/unipath2/home-view.fxml", event);
+        switchTab("/org/example/unipath2/views/pages/home-view.fxml", event);
     }
 
     @FXML
     public void handleLibrettoButton(ActionEvent event) {
-        switchTab("/org/example/unipath2/libretto-view.fxml", event);
+        switchTab("/org/example/unipath2/views/pages/libretto-view.fxml", event);
     }
 
     @FXML
     public void handleSettingsButton(ActionEvent event) {
-        openWindow("/org/example/unipath2/settings-view.fxml");
+        openWindow("/org/example/unipath2/views/windows/settings-view.fxml");
     }
 
 }

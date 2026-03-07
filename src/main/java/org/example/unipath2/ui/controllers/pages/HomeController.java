@@ -193,26 +193,26 @@ public class HomeController extends BaseController implements Observer {
 
     @FXML
     public void handleSimulateButton(ActionEvent event) {
-        openWindow("/org/example/unipath2/simulateGrade-view.fxml");
+        openWindow("/org/example/unipath2/views/windows/simulateGrade-view.fxml");
     }
 
     @FXML
     public void handleLibrettoButton(ActionEvent event) {
-        switchTab("/org/example/unipath2/libretto-view.fxml", event);
+        switchTab("/org/example/unipath2/views/pages/libretto-view.fxml", event);
     }
 
     @FXML
     public void handleStatsButton(ActionEvent event) {
-        switchTab("/org/example/unipath2/stats-view.fxml", event);
+        switchTab("/org/example/unipath2/views/pages/stats-view.fxml", event);
     }
 
     @FXML
     public void handleSettingsButton(ActionEvent event) {
-        openWindow("/org/example/unipath2/settings-view.fxml");
+        openWindow("/org/example/unipath2/views/windows/settings-view.fxml");
     }
 
     @FXML
     public void HandleSimulateGoalButton(ActionEvent event) {
-        openWindow("/org/example/unipath2/simulateGoal-view.fxml");
+        openWindow("/org/example/unipath2/views/windows/simulateGoal-view.fxml");
     }
 }

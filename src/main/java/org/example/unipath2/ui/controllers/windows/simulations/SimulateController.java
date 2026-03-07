@@ -51,8 +51,8 @@ public class SimulateController extends BaseController {
 
         int cfu = statistic.getEarnedCFU();
 
-        double wAvg = wAvgStatistic.compute(statistic.getValidPassedCourse());
-        double base = baseStatistic.compute(statistic.getValidPassedCourse());
+        double wAvg = wAvgStatistic.compute(statistic.getValidPassedCourse(), statistic);
+        double base = baseStatistic.compute(statistic.getValidPassedCourse(), statistic);
 
         int newCfu = cfu + selectedCfu;
         double newWAvg = (wAvg * cfu + selectedGrade * selectedCfu) / (cfu + selectedCfu);
@@ -77,9 +77,9 @@ public class SimulateController extends BaseController {
     }
 
     private void initializeLabels() {
-        wAvgLabel.setText(String.valueOf(wAvgStatistic.compute(statistic.getValidPassedCourse())));
+        wAvgLabel.setText(String.valueOf(wAvgStatistic.compute(statistic.getValidPassedCourse(), statistic)));
         cfuLabel.setText(String.valueOf(statistic.getEarnedCFU()));
-        baseLabel.setText(String.format("%.0f", baseStatistic.compute(statistic.getValidPassedCourse())));
+        baseLabel.setText(String.format("%.0f", baseStatistic.compute(statistic.getValidPassedCourse(), statistic)));
 
         resetLabelColor(wAvgLabel);
         resetLabelColor(cfuLabel);

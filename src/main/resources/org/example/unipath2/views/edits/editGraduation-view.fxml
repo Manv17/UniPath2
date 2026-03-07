@@ -11,20 +11,20 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.unipath2.ui.controllers.windows.edits.EditCourseController">
+<AnchorPane prefHeight="400.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.unipath2.ui.controllers.windows.edits.EditGraduationController">
    <children>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="30.0" stylesheets="@styles/button-style.css">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="30.0" stylesheets="@../../styles/button-style.css">
          <children>
-            <Label fx:id="nameLabel" contentDisplay="CENTER" graphicTextGap="10.0" prefWidth="700.0" styleClass="title" text="Name">
+            <Label contentDisplay="CENTER" graphicTextGap="10.0" prefWidth="700.0" styleClass="title" text="Modifica Prova finale">
                <font>
-                  <Font name="SF Pro Display Bold" size="14.0" />
+                  <Font name="SF Pro Display Black" size="14.0" />
                </font>
             </Label>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="60.0">
                <children>
                   <VBox maxHeight="100.0" maxWidth="300.0" prefHeight="100.0" prefWidth="300.0" spacing="10.0">
                      <children>
-                        <Label text="Stato:">
+                        <Label stylesheets="@../../styles/labels.css" text="Stato:">
                            <font>
                               <Font name="SF Pro Display Regular" size="14.0" />
                            </font>
@@ -34,25 +34,25 @@
                   </VBox>
                   <VBox maxHeight="100.0" maxWidth="300.0" prefHeight="100.0" prefWidth="300.0" spacing="10.0">
                      <children>
-                        <Label fx:id="gradeLabel" text="Voto:">
+                        <Label fx:id="pointsLabel" stylesheets="@../../styles/labels.css" text="Voto: (punti)">
                            <font>
                               <Font name="SF Pro Display Regular" size="14.0" />
                            </font>
                         </Label>
-                        <ChoiceBox fx:id="gradeChoice" prefHeight="30.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="pointChoice" prefHeight="30.0" prefWidth="150.0" />
                      </children>
                   </VBox>
                </children>
             </HBox>
             <VBox maxHeight="100.0" maxWidth="300.0" prefHeight="100.0" prefWidth="300.0" spacing="10.0">
                <children>
-                  <Label text="Data:">
+                  <Label fx:id="dateLabel" stylesheets="@../../styles/labels.css" text="Data:">
                      <font>
                         <Font name="SF Pro Display Regular" size="14.0" />
                      </font>
                   </Label>
                   <DatePicker fx:id="datePicker" />
-                  <Button mnemonicParsing="false" onAction="#clearDate" styleClass="clear-button" stylesheets="@styles/button-style.css" text="Cancella data" underline="true">
+                  <Button mnemonicParsing="false" onAction="#clearDate" styleClass="clear-button" stylesheets="@../../styles/button-style.css" text="Cancella data" underline="true">
                      <font>
                         <Font name="SF Pro Display Regular" size="13.0" />
                      </font>
@@ -67,7 +67,7 @@
             </ButtonBar>
          </children>
          <padding>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
          </padding>
       </VBox>
    </children>

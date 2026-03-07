@@ -73,7 +73,7 @@
                               <Font name="SF Pro Display Bold" size="18.0" />
                            </font>
                         </Text>
-                        <TableView fx:id="nextTable" maxHeight="250.0" maxWidth="300.0" styleClass="table-exams" stylesheets="@styles/table-style.css">
+                        <TableView fx:id="nextTable" maxHeight="250.0" maxWidth="300.0" styleClass="table-exams" stylesheets="@../../styles/table-style.css">
                            <columns>
                               <TableColumn fx:id="next_examColumn" editable="false" prefWidth="100.0" sortable="false" style="-fx-alignment: CENTER_LEFT;" />
                               <TableColumn fx:id="next_dateColumn" editable="false" maxWidth="100.0" prefWidth="100.0" sortable="false" />
@@ -84,12 +84,12 @@
                         </TableView>
                         <HBox alignment="CENTER" spacing="18.0">
                            <children>
-                              <Button maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" onAction="#handleSimulateButton" prefWidth="130.0" styleClass="special" stylesheets="@styles/button-style.css" text="Simula voto">
+                              <Button maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" onAction="#handleSimulateButton" prefWidth="130.0" styleClass="special" stylesheets="@../../styles/button-style.css" text="Simula voto">
                                  <font>
                                     <Font name="SF Pro Display Medium" size="14.0" />
                                  </font>
                               </Button>
-                              <Button maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" onAction="#HandleSimulateGoalButton" prefWidth="130.0" styleClass="special" stylesheets="@styles/button-style.css" text="Simula obiettivo" />
+                              <Button maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" onAction="#HandleSimulateGoalButton" prefWidth="130.0" styleClass="special" stylesheets="@../../styles/button-style.css" text="Simula obiettivo" />
                            </children>
                         </HBox>
                      </children>
@@ -104,7 +104,7 @@
                               <Font name="SF Pro Display Bold" size="18.0" />
                            </font>
                         </Text>
-                        <TableView fx:id="latestTable" maxHeight="250.0" maxWidth="300.0" styleClass="table-exams" stylesheets="@styles/table-style.css">
+                        <TableView fx:id="latestTable" maxHeight="250.0" maxWidth="300.0" styleClass="table-exams" stylesheets="@../../styles/table-style.css">
                           <columns>
                             <TableColumn fx:id="latest_courseColumn" editable="false" prefWidth="166.59213256835938" sortable="false" style="-fx-alignment: CENTER_LEFT;" />
                             <TableColumn fx:id="latest_gradeColumn" editable="false" maxWidth="70.0" prefWidth="70.0" sortable="false" />
@@ -133,7 +133,7 @@
                               </Text>
                            </children>
                         </VBox>
-                        <LineChart fx:id="avgChart" legendSide="TOP" legendVisible="false" prefHeight="270.0" prefWidth="320.0" stylesheets="@styles/graph-style.css">
+                        <LineChart fx:id="avgChart" legendSide="TOP" legendVisible="false" prefHeight="270.0" prefWidth="320.0" stylesheets="@../../styles/graph-style.css">
                           <xAxis>
                             <CategoryAxis side="BOTTOM" fx:id="xAvgChart" />
                           </xAxis>
@@ -155,7 +155,7 @@
                                     <Font name="SF Pro Display Bold" size="18.0" />
                                  </font>
                               </Text>
-                              <PieChart fx:id="pieChart" animated="false" legendVisible="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="250.0" prefWidth="276.0" startAngle="-90.0" stylesheets="@styles/chart-style.css" />
+                              <PieChart fx:id="pieChart" animated="false" legendVisible="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="250.0" prefWidth="276.0" startAngle="-90.0" stylesheets="@../../styles/chart-style.css" />
                            </children>
                         </VBox>
                      </children>
@@ -169,7 +169,7 @@
       </AnchorPane>
    </center>
    <left>
-      <VBox alignment="TOP_CENTER" prefWidth="200.0" spacing="200.0" style="-fx-background-color: f1f1f1;" stylesheets="@styles/sideBar-style.css" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefWidth="200.0" spacing="200.0" style="-fx-background-color: f1f1f1;" stylesheets="@../../styles/sideBar-style.css" BorderPane.alignment="CENTER">
          <children>
             <VBox alignment="TOP_CENTER" spacing="40.0">
                <children>
@@ -184,7 +184,7 @@
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@Icons/house-active.png" />
+                                    <Image url="@../../Icons/house-active.png" />
                                  </image>
                               </ImageView>
                            </graphic></Button>
@@ -192,7 +192,7 @@
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@Icons/book.pages.png" />
+                                    <Image url="@../../Icons/book.pages.png" />
                                  </image>
                               </ImageView>
                            </graphic></Button>
@@ -200,7 +200,7 @@
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@Icons/chart.line.text.clipboard.png" />
+                                    <Image url="@../../Icons/chart.line.text.clipboard.png" />
                                  </image>
                               </ImageView>
                            </graphic></Button>
@@ -210,11 +210,11 @@
             </VBox>
             <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button id="settingsButton" maxHeight="40.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleSettingsButton" prefHeight="40.0" styleClass="settingsButton" stylesheets="@styles/sideBar-style.css" text="Impostazioni">
+                  <Button id="settingsButton" maxHeight="40.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleSettingsButton" prefHeight="40.0" styleClass="settingsButton" stylesheets="@../../styles/sideBar-style.css" text="Impostazioni">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Icons/gear.png" />
+                              <Image url="@../../Icons/gear.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>

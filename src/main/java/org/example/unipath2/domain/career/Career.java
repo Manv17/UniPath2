@@ -2,6 +2,7 @@ package org.example.unipath2.domain.career;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.example.unipath2.domain.course.Course;
+import org.example.unipath2.domain.course.Graduation;
 import org.example.unipath2.domain.enums.CourseType;
 import org.example.unipath2.domain.enums.DegreeType;
 import org.example.unipath2.application.exception.DuplicateCourseException;
@@ -10,6 +11,7 @@ import java.util.*;
 
 public class Career implements Subject {
     private final List<Course> courses;
+    private Graduation graduation;
     @JsonIgnore
     private final Set<Observer> observers = new HashSet<>();
     @JsonIgnore
@@ -19,6 +21,8 @@ public class Career implements Subject {
 
     public Career() {
         this.courses = new ArrayList<>();
+        this.graduation = null;
+        this.setTOTAL_CFU(180);
     }
 
     @Override
@@ -85,6 +89,14 @@ public class Career implements Subject {
             setTOTAL_CFU(120);
         }
         notifyObservers();
+    }
+
+    public Graduation getGraduation() {
+        return graduation;
+    }
+
+    public void setGraduation(Graduation graduation) {
+        this.graduation = graduation;
     }
 
     public void resetCareer() {

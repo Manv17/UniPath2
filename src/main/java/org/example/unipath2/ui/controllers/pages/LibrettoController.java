@@ -1,9 +1,11 @@
 package org.example.unipath2.ui.controllers.pages;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.example.unipath2.domain.career.Observer;
+import org.example.unipath2.domain.course.Graduation;
 import org.example.unipath2.ui.controllers.BaseController;
 import org.example.unipath2.domain.course.Course;
 import org.example.unipath2.domain.enums.CourseSemester;
@@ -22,60 +24,114 @@ import java.time.format.DateTimeFormatter;
 public class LibrettoController extends BaseController implements Observer {
 
     private final CareerActions actions = new CareerActions();
+    @FXML
+    public TableView<Object> coursesTable;
+    @FXML
+    public TableColumn<Object, String> courseNameColumn;
+    @FXML
+    public TableColumn<Object, Number> cfuColumn;
+    @FXML
+    public TableColumn<Object, CourseStatus> statusColumn;
+    @FXML
+    public TableColumn<Object, CourseSemester> semesterColumn;
+    @FXML
+    public TableColumn<Object, String> dateColumn;
+    @FXML
+    public TableColumn<Object, String> gradeColumn;
+    @FXML
+    public TableColumn<Object, Number> yearColumn;
+    @FXML
+    public MenuItem addGraduationItem;
     DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-    @FXML
-    public TableView<Course> coursesTable;
-    @FXML
-    public TableColumn<Course, String> courseNameColumn;
-    @FXML
-    public TableColumn<Course, Number> cfuColumn;
-    @FXML
-    public TableColumn<Course, CourseStatus> statusColumn;
-    @FXML
-    public TableColumn<Course, CourseSemester> semesterColumn;
-    @FXML
-    public TableColumn<Course, String> dateColumn;
-    @FXML
-    public TableColumn<Course, String> gradeColumn;
-    @FXML
-    public TableColumn<Course, Number> yearColumn;
 
     @Override
     public void onContextSet() {
         statistic = new Statistic(career.getCourses(), career);
+        updateTable();
         refreshUI();
     }
 
     private void updateTable() {
-        courseNameColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(cellData.getValue().getName()));
+        courseNameColumn.setCellValueFactory(cellData -> {
+            Object value = cellData.getValue();
+            if (value instanceof Course course) {
+                return new SimpleStringProperty(course.getName());
+            }
+            if (value instanceof Graduation) {
+                return new SimpleStringProperty("Prova finale");
+            }
+            return new SimpleStringProperty("");
+        });
 
-        cfuColumn.setCellValueFactory(cellData ->
-                new SimpleIntegerProperty(cellData.getValue().getCfu()));
+        cfuColumn.setCellValueFactory(cellData -> {
+            Object value = cellData.getValue();
+            if (value instanceof Course course) {
+                return new SimpleIntegerProperty(course.getCfu());
+            }
+            if (value instanceof Graduation graduation) {
+                return new SimpleIntegerProperty(graduation.getCfu());
+            }
+            return new SimpleIntegerProperty(0);
+        });
 
-        statusColumn.setCellValueFactory(cellData ->
-                new SimpleObjectProperty<>(cellData.getValue().getStatus()));
+        statusColumn.setCellValueFactory(cellData -> {
+            Object value = cellData.getValue();
+            if (value instanceof Course course) {
+                return new SimpleObjectProperty<>(course.getStatus());
+            }
+            if (value instanceof Graduation graduation) {
+                return new SimpleObjectProperty<>(graduation.getStatus());
+            }
+            return new SimpleObjectProperty<>(null);
+        });
 
-        semesterColumn.setCellValueFactory(cellData ->
-                new SimpleObjectProperty<CourseSemester>(cellData.getValue().getSemester()));
+        semesterColumn.setCellValueFactory(cellData -> {
+            Object value = cellData.getValue();
+            if (value instanceof Course course) {
+                return new SimpleObjectProperty<>(course.getSemester());
+            }
+            return new SimpleObjectProperty<>(null);
+        });
 
-        yearColumn.setCellValueFactory(cellData ->
-                new SimpleIntegerProperty(cellData.getValue().getYear()));
+        yearColumn.setCellValueFactory(cellData -> {
+            Object value = cellData.getValue();
+            if (value instanceof Course course) {
+                return new SimpleIntegerProperty(course.getYear());
+            }
+            return new SimpleIntegerProperty(0);
+        });
 
         dateColumn.setCellValueFactory(cellData -> {
-                    LocalDate date = cellData.getValue().getDate();
-                    return new SimpleStringProperty(date != null ? dateTimeFormatter.format(date) : "");
-                }
-        );
+            Object value = cellData.getValue();
+            LocalDate date = null;
+
+            if (value instanceof Course course) {
+                date = course.getDate();
+            } else if (value instanceof Graduation graduation) {
+                date = graduation.getGraduationDate();
+            }
+
+            return new SimpleStringProperty(date != null ? dateTimeFormatter.format(date) : "");
+        });
 
         gradeColumn.setCellValueFactory(cellData -> {
-            Course course = cellData.getValue();
-            if (course instanceof AptitudinalCourse apt) {
+            Object value = cellData.getValue();
+
+            if (value instanceof AptitudinalCourse apt) {
                 return new SimpleStringProperty(apt.isPassed() ? "Idoneo" : "");
             }
-            Integer grade = course.getGrade();
-            return new SimpleStringProperty(grade != null ? grade.toString() : "");
+
+            if (value instanceof Course course) {
+                Integer grade = course.getGrade();
+                return new SimpleStringProperty(grade != null ? grade.toString() : "");
+            }
+
+            if (value instanceof Graduation graduation) {
+                Integer points = graduation.getThesisPoints();
+                return new SimpleStringProperty(points != null ? "+" + points : "");
+            }
+
+            return new SimpleStringProperty("");
         });
     }
 
@@ -85,16 +141,47 @@ public class LibrettoController extends BaseController implements Observer {
         if (career == null || coursesTable == null) {
             return;
         }
-        coursesTable.setItems(FXCollections.observableArrayList(career.getCourses()));
-        updateTable();
-        coursesTable.refresh();
+        ObservableList<Object> tableItems = FXCollections.observableArrayList();
+        tableItems.addAll(career.getCourses());
+        if (career.getGraduation() != null) {
+            tableItems.add(career.getGraduation());
+        }
+        coursesTable.setItems(tableItems);
+
+        if (career.getGraduation() != null) {
+            addGraduationItem.setDisable(true);
+            addGraduationItem.setText("Prova finale già presente");
+        } else {
+            addGraduationItem.setDisable(false);
+            addGraduationItem.setText("Prova finale");
+        }
     }
 
     @FXML
-    public void handleDeleteButton(ActionEvent event) {
-        Course selectedCourse = coursesTable.getSelectionModel().getSelectedItem();
-        if (selectedCourse != null) {
+    public void handleDeleteButton() {
+        Object selectedItem = coursesTable.getSelectionModel().getSelectedItem();
 
+        if (selectedItem instanceof Graduation) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Conferma eliminazione prova finale");
+            alert.setHeaderText("Sei sicuro di voler eliminare la prova finale?");
+
+            if (alert.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
+                Alert info = new Alert(Alert.AlertType.INFORMATION);
+                info.setTitle("Prova finale eliminata");
+                info.setHeaderText("");
+                info.setContentText("Prova finale eliminata con successo");
+                info.showAndWait();
+
+                career.setGraduation(null);
+                actions.saveCareer(career);
+                career.notifyObservers();
+                refreshUI();
+            }
+            return;
+        }
+
+        if ((selectedItem instanceof Course selectedCourse)) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Conferma eliminazione corso");
             alert.setHeaderText("Sei sicuro di voler eliminare il corso " + selectedCourse.getName() + "?");
@@ -113,44 +200,57 @@ public class LibrettoController extends BaseController implements Observer {
         }
     }
 
-    public void handleEditButton(ActionEvent event) {
-        Course selected = coursesTable.getSelectionModel().getSelectedItem();
-        if (selected == null) {
+    public void handleEditButton() {
+        Object selectedItem = coursesTable.getSelectionModel().getSelectedItem();
+        if (selectedItem == null) {
+            return;
+        }
+
+        if (selectedItem instanceof Graduation) {
+            openWindow("/org/example/unipath2/views/edits/editGraduation-view.fxml");
+            return;
+        }
+
+        if (!(selectedItem instanceof Course selected)) {
             return;
         }
 
         String fxml;
         if (selected instanceof AptitudinalCourse) {
-            fxml = "/org/example/unipath2/editAptitudinal-view.fxml";
+            fxml = "/org/example/unipath2/views/edits/editAptitudinal-view.fxml";
         } else {
-            fxml = "/org/example/unipath2/editCourse-view.fxml";
+            fxml = "/org/example/unipath2/views/edits/editCourse-view.fxml";
         }
         openWindow(fxml, selected);
     }
 
     @FXML
     public void handleHomeButton(ActionEvent event) {
-        switchTab("/org/example/unipath2/home-view.fxml", event);
+        switchTab("/org/example/unipath2/views/pages/home-view.fxml", event);
     }
 
     @FXML
     public void handleStatsButton(ActionEvent event) {
-        switchTab("/org/example/unipath2/stats-view.fxml", event);
+        switchTab("/org/example/unipath2/views/pages/stats-view.fxml", event);
     }
 
     @FXML
-    public void handleAddGradedCourse(ActionEvent event) {
-        openWindow("/org/example/unipath2/addCourse-view.fxml");
+    public void handleAddGradedCourse() {
+        openWindow("/org/example/unipath2/views/adds/addCourse-view.fxml");
     }
 
     @FXML
-    public void handleAddAptitudinalCourse(ActionEvent event) {
-        openWindow("/org/example/unipath2/addAptitudinal-view.fxml");
+    public void handleAddAptitudinalCourse() {
+        openWindow("/org/example/unipath2/views/adds/addAptitudinal-view.fxml");
     }
 
     @FXML
-    public void handleSettingsButton(ActionEvent event) {
-        openWindow("/org/example/unipath2/settings-view.fxml");
+    public void handleSettingsButton() {
+        openWindow("/org/example/unipath2/views/windows/settings-view.fxml");
     }
 
+    @FXML
+    public void handleAddGraduation() {
+        openWindow("/org/example/unipath2/views/adds/addGraduation-view.fxml");
+    }
 }

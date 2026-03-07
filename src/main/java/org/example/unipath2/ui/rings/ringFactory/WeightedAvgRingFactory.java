@@ -11,7 +11,7 @@ public class WeightedAvgRingFactory implements RingFactory {
 
     @Override
     public RingCard createRingCard(Statistic statistic, int diameter) {
-        double wAvg = numericStrategy.compute(statistic.getValidPassedCourse());
+        double wAvg = numericStrategy.compute(statistic.getValidPassedCourse(), statistic);
         String label = "/ " + (int) statistic.getMaxAvg();
         double progress = wAvg / statistic.getMaxAvg();
 

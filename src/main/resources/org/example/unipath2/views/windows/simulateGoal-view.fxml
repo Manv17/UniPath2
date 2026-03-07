@@ -47,7 +47,7 @@
                         <Font name="SF Pro Display Regular" size="14.0" />
                      </font>
                   </Label>
-                  <Spinner id="spinner" fx:id="goalSpinner" maxWidth="200.0" prefHeight="45.0" prefWidth="227.0" stylesheets="@styles/button-style.css" />
+                  <Spinner id="spinner" fx:id="goalSpinner" maxWidth="200.0" prefHeight="45.0" prefWidth="227.0" stylesheets="@../../styles/button-style.css" />
                </children>
                <HBox.margin>
                   <Insets />
@@ -55,7 +55,7 @@
             </VBox>
             <HBox alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#handleSimulate" prefWidth="150.0" stylesheets="@styles/button-style.css" text="Simula" />
+                  <Button mnemonicParsing="false" onAction="#handleSimulate" prefWidth="150.0" stylesheets="@../../styles/button-style.css" text="Simula" />
                </children>
                <HBox.margin>
                   <Insets />

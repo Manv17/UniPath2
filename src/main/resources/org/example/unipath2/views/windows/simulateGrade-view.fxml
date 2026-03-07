@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" spacing="40.0" style="-fx-background-color: fff;" stylesheets="@styles/button-style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.unipath2.ui.controllers.windows.simulations.SimulateController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" spacing="40.0" style="-fx-background-color: fff;" stylesheets="@../../styles/button-style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.unipath2.ui.controllers.windows.simulations.SimulateController">
    <children>
       <Label lineSpacing="2.0" prefHeight="44.0" prefWidth="262.0" text="Simula voto">
          <font>
             <Font name="SF Pro Display Bold" size="36.0" />
          </font>
       </Label>
-      <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0" spacing="30.0" stylesheets="@styles/button-style.css">
+      <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0" spacing="30.0" stylesheets="@../../styles/button-style.css">
          <children>
             <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" spacing="10.0">
                <children>

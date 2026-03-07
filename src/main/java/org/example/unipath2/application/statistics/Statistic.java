@@ -2,6 +2,8 @@ package org.example.unipath2.application.statistics;
 
 import org.example.unipath2.domain.career.Career;
 import org.example.unipath2.domain.course.Course;
+import org.example.unipath2.domain.course.Graduation;
+import org.example.unipath2.domain.enums.CourseStatus;
 import org.example.unipath2.domain.enums.CourseType;
 
 import java.util.List;
@@ -11,15 +13,18 @@ public class Statistic {
 
     private static final double MAX_AVG = 30;
     private static final double MAX_BASE = 110;
-    private double TOTAL_CFU;
-
     private final List<Course> courses;
+    private double TOTAL_CFU;
+    private Integer thesisPoins;
     private Career career;
 
     public Statistic(List<Course> courses, Career career) {
         this.courses = courses;
         this.career = career;
         this.TOTAL_CFU = career.getTOTAL_CFU();
+        if (career.getGraduation() != null) {
+            this.thesisPoins = career.getGraduation().getThesisPoints();
+        }
     }
 
     public List<Course> getPassedCourse() {
@@ -56,6 +61,12 @@ public class Statistic {
         int cfu = 0;
         for (Course c : getPassedCourse()) {
             cfu += c.getCfu();
+        }
+
+        Graduation graduation = career.getGraduation();
+
+        if (graduation != null && graduation.getStatus().equals(CourseStatus.SUPERATO)) {
+            cfu += career.getGraduation().getCfu();
         }
         return cfu;
     }
@@ -96,4 +107,7 @@ public class Statistic {
         return TOTAL_CFU;
     }
 
+    public Integer getThesisPoins() {
+        return thesisPoins;
+    }
 }
