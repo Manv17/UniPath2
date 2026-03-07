@@ -30,13 +30,16 @@ jobs:
         shell: pwsh
         run: Get-ChildItem -Recurse target
 
-      - name: Create EXE from app-image
+      - name: Create EXE
         shell: pwsh
         run: |
           jpackage `
             --type exe `
             --name UniPath2 `
-            --app-image target/app `
+            --input target `
+            --main-jar UniPath2-1.0-SNAPSHOT.jar `
+            --main-class org.example.unipath2.ui.Home `
+            --runtime-image target/app `
             --dest dist
 
       - name: Upload Windows artifact
@@ -68,12 +71,15 @@ jobs:
       - name: Show target folder
         run: ls -R target
 
-      - name: Create DMG from app-image
+      - name: Create DMG
         run: |
           jpackage \
             --type dmg \
             --name UniPath2 \
-            --app-image target/app \
+            --input target \
+            --main-jar UniPath2-1.0-SNAPSHOT.jar \
+            --main-class org.example.unipath2.ui.Home \
+            --runtime-image target/app \
             --dest dist
 
       - name: Upload macOS artifact
