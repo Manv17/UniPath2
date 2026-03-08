@@ -8,7 +8,7 @@ Desktop application dedicated to University students.
 2. Date pulite ✅
 3. Traduzione tutto italiano ✅
 4. Simulazione più voti
-5. Simulazione voti dei esami mancanti
+5. Simulazione voti dei esami mancanti ✅
 6. Esami ciclo unico ✅
 7. Icone pagine sidebar ✅
 8. Sezione "prossimi esami" ✅
@@ -18,3 +18,4 @@ Desktop application dedicated to University students.
 13. Possibilità di azzerare la data (pulsante) ✅
 14. Gestione aggiunta prova finale ✅
 15. Gestione prova finale nel calcolo della base ✅
+16. Automatizzazione aggiunta esami tramite "Piano di studi" formato PDF

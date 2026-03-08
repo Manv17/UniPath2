@@ -117,16 +117,7 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course{" +
-                "name='" + name + '\'' +
-                ", cfu=" + cfu +
-                ", year=" + year +
-                ", semester=" + semester +
-                ", status=" + status +
-                ", grade=" + grade +
-                ", date=" + date +
-                ", type=" + type +
-                '}';
+        return getName();
     }
 
 }
