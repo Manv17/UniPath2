@@ -27,23 +27,26 @@ jobs:
       - name: Create runtime image
         run: mvn javafx:jlink
 
-      - name: Create EXE installer
+      - name: Create MSI installer
         shell: pwsh
         run: |
           jpackage `
-            --type exe `
+            --type msi `
             --name UniPath2 `
             --input target `
             --main-jar UniPath2-1.0-SNAPSHOT.jar `
             --main-class org.example.unipath2.ui.Home `
             --runtime-image target/app `
             --icon src/main/resources/org/example/unipath2/Icons/app-icon.ico `
+            --win-shortcut `
+            --win-menu `
             --dest dist
 
-      - name: Upload EXE to release
+      - name: Upload MSI to release
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/*.exe
+          files: dist/*.msi
+
 
   build-macos:
     runs-on: macos-latest
