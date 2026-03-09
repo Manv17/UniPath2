@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.example.unipath2.domain.career.Career;
 import org.example.unipath2.domain.career.CareerActions;
+import org.example.unipath2.infrastructure.UpdateManager;
 import org.example.unipath2.ui.controllers.BaseController;
 
 import java.io.IOException;
@@ -33,5 +34,17 @@ public class Home extends Application {
         stage.setScene(new Scene(root));
         stage.setTitle(null);
         stage.show();
+
+        UpdateManager updateManager = new UpdateManager(
+                "Manv17",
+                "UniPath2",
+                "2.2.1"
+        );
+
+        javafx.animation.PauseTransition delay =
+                new javafx.animation.PauseTransition(javafx.util.Duration.seconds(3));
+
+        delay.setOnFinished(e -> updateManager.checkForUpdatesAsync(stage));
+        delay.play();
     }
 }
