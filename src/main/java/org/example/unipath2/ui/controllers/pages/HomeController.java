@@ -11,6 +11,8 @@ import javafx.scene.chart.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import org.example.unipath2.application.statistics.courseList.NextExamsStatistic;
@@ -30,6 +32,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 
 public class HomeController extends BaseController implements Observer {
@@ -68,8 +71,10 @@ public class HomeController extends BaseController implements Observer {
     public TableColumn<Course, String> next_examColumn;
     @FXML
     public TableColumn<Course, String> next_dateColumn;
+    @FXML
+    public Label baseInfoLabel;
 
-    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd MMMM");
+    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd MMMM", Locale.ITALIAN);
 
     @Override
     public void onContextSet() {
@@ -82,6 +87,7 @@ public class HomeController extends BaseController implements Observer {
         updateRing(cfuContainer, cfuFactory);
         updateRing(wAvgContainer, weightedAvgRingFactoryAvgFactory);
         updateRing(baseContainer, baseFactory);
+        updateBaseTooltip();
         updateLatestTable();
         updatePieChart();
         updateAvgChart();
@@ -90,6 +96,18 @@ public class HomeController extends BaseController implements Observer {
 
     private void updateRing(StackPane container, RingFactory factory) {
         container.getChildren().setAll(factory.createRingCard(statistic, 120));
+    }
+
+    private void updateBaseTooltip() {
+
+        String tooltipText = "La base di laurea si ottiene come:\n" +
+                "(Media ponderata × 110) / 30";
+
+        Tooltip tooltip = new Tooltip(tooltipText);
+        tooltip.setShowDelay(javafx.util.Duration.millis(100));
+        tooltip.setStyle("-fx-font-size: 14px; -fx-background-color: black; -fx-text-fill: white;");
+
+        baseInfoLabel.setTooltip(tooltip);
     }
 
     private void updateLatestTable() {
@@ -215,4 +233,5 @@ public class HomeController extends BaseController implements Observer {
     public void HandleSimulateGoalButton(ActionEvent event) {
         openWindow("/org/example/unipath2/views/windows/simulateGoal-view.fxml");
     }
+
 }
