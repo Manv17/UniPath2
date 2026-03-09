@@ -9,12 +9,42 @@ import org.example.unipath2.domain.enums.CourseSemester;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public final class Storage {
-    private static final File fileCareer = new File("career.json");
+    private static final Path appDirectory = initAppDirectory();
+    private static final File fileCareer = appDirectory.resolve("career.json").toFile();
     private static final ObjectMapper mapper = new ObjectMapper()
             .registerModule(new JavaTimeModule());
 
+    private static Path initAppDirectory() {
+        Path appDirectory = resolveAppDirectory();
+        try {
+            Files.createDirectories(appDirectory);
+        } catch (IOException e) {
+            throw new RuntimeException("Unable to create app data directory: " + appDirectory, e);
+        }
+        return appDirectory;
+    }
+
+    private static Path resolveAppDirectory() {
+        String os = System.getProperty("os.name").toLowerCase();
+
+        if (os.contains("win")) {
+            String appData = System.getenv("APPDATA");
+            if (appData != null && !appData.isBlank()) {
+                return Paths.get(appData, "UniPath2");
+            }
+        }
+
+        if (os.contains("mac")) {
+            return Paths.get(System.getProperty("user.home"), "Library", "Application Support", "UniPath2");
+        }
+
+        return Paths.get(System.getProperty("user.home"), ".unipath2");
+    }
 
     public static Career loadCareer() {
         try {
