@@ -27,6 +27,11 @@ jobs:
       - name: Create runtime image
         run: mvn javafx:jlink
 
+      - name: Verify runtime modules
+        shell: pwsh
+        run: |
+          target/app/bin/java --list-modules | Select-String "jdk.crypto.ec"
+
       - name: Create MSI installer
         shell: pwsh
         run: |
@@ -65,6 +70,10 @@ jobs:
 
       - name: Create runtime image
         run: mvn javafx:jlink
+
+      - name: Verify runtime modules
+        run: |
+          target/app/bin/java --list-modules | grep jdk.crypto.ec
 
       - name: Create DMG installer
         run: |
