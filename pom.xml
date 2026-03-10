@@ -83,6 +83,7 @@
                             <noManPages>true</noManPages>
                             <stripDebug>true</stripDebug>
                             <noHeaderFiles>true</noHeaderFiles>
+                            <addModules>jdk.crypto.ec</addModules>
                         </configuration>
                     </execution>
                 </executions>
