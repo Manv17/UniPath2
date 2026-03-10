@@ -38,7 +38,7 @@ public class Home extends Application {
         UpdateManager updateManager = new UpdateManager(
                 "Manv17",
                 "UniPath2",
-                "2.2.4"
+                "2.2.5"
         );
 
         javafx.animation.PauseTransition delay =
