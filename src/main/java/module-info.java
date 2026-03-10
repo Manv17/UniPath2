@@ -6,6 +6,7 @@ module org.example.unipath2 {
     requires com.fasterxml.jackson.datatype.jsr310;
     requires java.desktop;
     requires java.net.http;
+    requires jdk.crypto.ec;
 
     opens org.example.unipath2.ui.controllers to javafx.fxml;
 
