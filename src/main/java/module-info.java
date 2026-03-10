@@ -40,4 +40,5 @@ module org.example.unipath2 {
     opens org.example.unipath2.ui to javafx.fxml;
     exports org.example.unipath2.ui.controllers.windows.simulations;
     opens org.example.unipath2.ui.controllers.windows.simulations to javafx.fxml;
+
 }
