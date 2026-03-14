@@ -5,6 +5,7 @@ import javafx.beans.binding.DoubleBinding;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.geometry.Pos;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -21,7 +22,7 @@ public class ProgressRing extends StackPane {
     private final Text bottomText;
 
     // thickness as a fraction of the widget size
-    private final double thicknessRatio = 0.1; // 10% of min(width,height)
+    private final double thicknessRatio = 0.08; // softer iOS-like ring thickness
 
     public ProgressRing() {
         this(120); // default diameter
@@ -36,14 +37,15 @@ public class ProgressRing extends StackPane {
         // --- Base (track) ---
         track = new Circle();
         track.setFill(null);
-        track.setStroke(Color.web("#E0E0E0"));
-        track.setStrokeLineCap(StrokeLineCap.BUTT);
+        track.setStroke(Color.web("#E9E9EE"));
+        track.setStrokeLineCap(StrokeLineCap.ROUND);
 
         // --- Foreground (progress) ---
         bar = new Circle();
         bar.setFill(null);
-        bar.setStroke(Color.web("#4CAF50"));
-        bar.setStrokeLineCap(StrokeLineCap.BUTT); // use ROUND if you prefer rounded ends
+        bar.setStroke(Color.web("#0A84FF"));
+        bar.setStrokeLineCap(StrokeLineCap.ROUND);
+        bar.setEffect(new DropShadow(10, Color.web("rgba(10,132,255,0.18)")));
 
         // Center both circles inside this StackPane
         track.centerXProperty().bind(widthProperty().divide(2));
@@ -68,12 +70,12 @@ public class ProgressRing extends StackPane {
         // --- Center text ---
         centerText = new Text();
         centerText.setFont(Font.font("SF Pro Display", FontWeight.BOLD, 20));
-        centerText.setFill(Color.web("#222"));
+        centerText.setFill(Color.web("#111111"));
 
         // --- Bottom text ----
         bottomText = new Text();
-        bottomText.setFont(Font.font("SF Pro Display", FontWeight.BOLD, 12));
-        bottomText.setFill(Color.web("#a0a0a0"));
+        bottomText.setFont(Font.font("SF Pro Display Medium", FontWeight.MEDIUM, 12));
+        bottomText.setFill(Color.web("#4d5562"));
 
         // VBox for texts
         javafx.scene.layout.VBox textBox = new javafx.scene.layout.VBox();
@@ -132,7 +134,8 @@ public class ProgressRing extends StackPane {
      * Changes the color of the progress ring.
      */
     public void setRingColor(Color color) {
-        bar.setStroke(color == null ? Color.web("#4CAF50") : color);
+        bar.setStroke(color == null ? Color.web("#0A84FF") : color);
+        setTrackColor(color == null ? Color.web("#E9E9EE") : color.deriveColor(0, 0.18, 1.0, 1.0));
     }
 
     public void setBottomText(String text) {
@@ -143,6 +146,6 @@ public class ProgressRing extends StackPane {
      * Changes the color of the background track.
      */
     public void setTrackColor(Color color) {
-        track.setStroke(color == null ? Color.web("#E0E0E0") : color);
+        track.setStroke(color == null ? Color.web("#E9E9EE") : color);
     }
 }
