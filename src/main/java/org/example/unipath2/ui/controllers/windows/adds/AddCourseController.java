@@ -169,6 +169,10 @@ public class AddCourseController extends WindowController {
                     .validateNotNull(date, datePicker);
         }
 
+        if (courseStatus == CourseStatus.PIANIFICATO) {
+            validator.validateNotNull(date, datePicker);
+        }
+
         return validator.isValid();
     }
 }

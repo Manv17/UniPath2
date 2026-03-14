@@ -130,9 +130,13 @@ public class EditCourseController extends WindowController {
 
         validator.validateNotNull(status, statusChoice);
 
-        if (status == CourseStatus.SUPERATO ){
+        if (status == CourseStatus.SUPERATO) {
             validator.validateNotNull(grade, gradeChoice)
                     .validateNotNull(date, datePicker);
+        }
+
+        if (status == CourseStatus.PIANIFICATO) {
+            validator.validateNotNull(date, datePicker);
         }
 
         return validator.isValid();

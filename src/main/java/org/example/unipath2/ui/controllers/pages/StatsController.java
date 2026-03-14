@@ -1,12 +1,17 @@
 package org.example.unipath2.ui.controllers.pages;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
+import javafx.scene.layout.HBox;
+import javafx.util.Duration;
 import org.example.unipath2.domain.career.Observer;
+import org.example.unipath2.domain.enums.DegreeType;
 import org.example.unipath2.ui.controllers.BaseController;
 import org.example.unipath2.domain.course.Course;
 import org.example.unipath2.application.statistics.Statistic;
@@ -15,8 +20,11 @@ import org.example.unipath2.application.statistics.minmax.CourseStrategy;
 import org.example.unipath2.application.statistics.minmax.MaxStatistic;
 import org.example.unipath2.application.statistics.minmax.MinStatistic;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 public class StatsController extends BaseController implements Observer {
@@ -40,6 +48,12 @@ public class StatsController extends BaseController implements Observer {
     public LineChart<String, Number> weightedAvgGradesChart;
     @FXML
     public LineChart<String, Number> cfuChart;
+    @FXML
+    public HBox statusCard;
+    @FXML
+    public Label statusLabel;
+
+    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.ITALIAN);
 
     @Override
     public void onContextSet() {
@@ -51,7 +65,7 @@ public class StatsController extends BaseController implements Observer {
     public void refreshUI() {
         AvgStatistic avgStatistic = new AvgStatistic();
         double avg = avgStatistic.compute(statistic.getValidPassedCourse(), statistic);
-        avgLabel.setText(String.format(String.valueOf(avg), "%.0f"));
+        avgLabel.setText(String.format("%.0f", avg));
 
         careerProgressLabel.setText(statistic.getCfuProgressText() + "%");
         courseProgressLabel.setText(statistic.getPassedCourse().size() + "/" + career.getCourses().size());
@@ -67,6 +81,37 @@ public class StatsController extends BaseController implements Observer {
 
         updateWeightedAvgChart();
         updateCfuChart();
+        updateStatus();
+    }
+
+    private void updateStatus() {
+        Integer enrollmentYear = career.getEnrollmentYear();
+        DegreeType degreeType = career.getDegreeType();
+
+        LocalDate enrollmentDate = LocalDate.of(enrollmentYear, 9, 15);
+
+        LocalDate deadline = degreeType == DegreeType.TRIENNALE
+                ? enrollmentDate.plusYears(3).plusMonths(6)
+                : enrollmentDate.plusYears(2).plusMonths(6);
+
+        LocalDate today = LocalDate.now();
+
+        if (!today.isAfter(deadline)) {
+            statusLabel.setText("Stato: in corso");
+            statusLabel.setStyle("-fx-text-fill: rgb(52,118,89);");
+            statusCard.setStyle("-fx-background-color: rgb(246,251,249);" +
+                    " -fx-border-color: rgb(214,238,226);" +
+                    "-fx-background-radius: 12px; " +
+                    "-fx-border-radius: 12px;");
+        } else {
+            statusLabel.setText("Stato: fuori corso");
+            statusLabel.setStyle("-fx-text-fill: rgb(168,58,58);");
+
+            statusCard.setStyle("-fx-background-color: rgb(255,245,245);" +
+                    "-fx-border-color: rgb(255,220,220);" +
+                    "-fx-background-radius: 12px;" +
+                    "-fx-border-radius: 12px;");
+        }
     }
 
     private void updateWeightedAvgChart() {
@@ -90,13 +135,39 @@ public class StatsController extends BaseController implements Observer {
             cfuSum += c.getCfu();
 
             double avg = weightedSum / cfuSum;
-            String label = c.getDate().toString();
+            String label = dateTimeFormatter.format(c.getDate());
 
             avgSeries.getData().add(new XYChart.Data<>(label, avg));
             gradesSeries.getData().add(new XYChart.Data<>(label, c.getGrade()));
         }
 
         weightedAvgGradesChart.getData().addAll(avgSeries, gradesSeries);
+
+        Platform.runLater(() -> {
+            for (XYChart.Data<String, Number> data : avgSeries.getData()) {
+                if (data.getNode() != null) {
+                    Tooltip tooltip = new Tooltip(
+                            data.getXValue() + "\n" +
+                                    "Media ponderata: " + String.format(Locale.ITALIAN, "%.2f", data.getYValue().doubleValue())
+                    );
+                    tooltip.setShowDelay(Duration.millis(100));
+                    tooltip.setStyle("-fx-font-size: 14px; -fx-background-color: black; -fx-text-fill: white;");
+                    Tooltip.install(data.getNode(), tooltip);
+                }
+            }
+
+            for (XYChart.Data<String, Number> data : gradesSeries.getData()) {
+                if (data.getNode() != null) {
+                    Tooltip tooltip = new Tooltip(
+                            data.getXValue() + "\n" +
+                                    "Voto: " + data.getYValue().intValue()
+                    );
+                    tooltip.setShowDelay(Duration.millis(100));
+                    tooltip.setStyle("-fx-font-size: 14px; -fx-background-color: black; -fx-text-fill: white;");
+                    Tooltip.install(data.getNode(), tooltip);
+                }
+            }
+        });
     }
 
     private void updateCfuChart() {
@@ -113,10 +184,25 @@ public class StatsController extends BaseController implements Observer {
 
         for (Course course : passed) {
             totalCfu += course.getCfu();
-            series.getData().add(new XYChart.Data<>(course.getName(), totalCfu));
+            String label = dateTimeFormatter.format(course.getDate());
+            series.getData().add(new XYChart.Data<>(label, totalCfu));
         }
 
         cfuChart.getData().add(series);
+
+        Platform.runLater(() -> {
+            for (XYChart.Data<String, Number> data : series.getData()) {
+                if (data.getNode() != null) {
+                    Tooltip tooltip = new Tooltip(
+                            data.getXValue() + "\n" +
+                                    "CFU: " + data.getYValue().intValue()
+                    );
+                    tooltip.setShowDelay(Duration.millis(100));
+                    tooltip.setStyle("-fx-font-size: 14px; -fx-background-color: black; -fx-text-fill: white;");
+                    Tooltip.install(data.getNode(), tooltip);
+                }
+            }
+        });
     }
 
     private void hideXaxis(LineChart<String, Number> chart) {
@@ -137,7 +223,7 @@ public class StatsController extends BaseController implements Observer {
     }
 
     @FXML
-    public void handleSettingsButton(ActionEvent event) {
+    public void handleSettingsButton() {
         openWindow("/org/example/unipath2/views/windows/settings-view.fxml");
     }
 

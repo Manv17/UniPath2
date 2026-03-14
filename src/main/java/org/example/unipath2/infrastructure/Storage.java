@@ -1,7 +1,10 @@
 package org.example.unipath2.infrastructure;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.example.unipath2.domain.career.Career;
 import org.example.unipath2.domain.course.AptitudinalCourse;
@@ -16,8 +19,10 @@ import java.nio.file.Paths;
 public final class Storage {
     private static final Path appDirectory = initAppDirectory();
     private static final File fileCareer = appDirectory.resolve("career.json").toFile();
+    private static final int CURRENT_SCHEMA_VERSION = 2;
     private static final ObjectMapper mapper = new ObjectMapper()
-            .registerModule(new JavaTimeModule());
+            .registerModule(new JavaTimeModule())
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
     private static Path initAppDirectory() {
         Path appDirectory = resolveAppDirectory();
@@ -46,6 +51,32 @@ public final class Storage {
         return Paths.get(System.getProperty("user.home"), ".unipath2");
     }
 
+    private static JsonNode migrateIfNeeded(JsonNode root) {
+        int version = root.has("schemaVersion") ? root.get("schemaVersion").asInt() : 1;
+
+        while (version < CURRENT_SCHEMA_VERSION) {
+            switch (version) {
+                case 1 -> {
+                    root = migrateV1ToV2((ObjectNode) root);
+                    version = 2;
+                }
+                default -> throw new IllegalStateException("Unsupported schema version: " + version);
+            }
+        }
+
+        return root;
+    }
+
+    private static JsonNode migrateV1ToV2(ObjectNode root) {
+        root.put("schemaVersion", 2);
+
+        if (!root.has("annoImmatricolazione")) {
+            root.putNull("annoImmatricolazione");
+        }
+
+        return root;
+    }
+
     public static Career loadCareer() {
         try {
             if (!fileCareer.exists()) saveCareer(new Career());
@@ -54,7 +85,14 @@ public final class Storage {
                 return new Career();
             }
 
-            Career career = mapper.readValue(fileCareer, Career.class);
+            JsonNode root = mapper.readTree(fileCareer);
+            JsonNode migratedRoot = migrateIfNeeded(root);
+
+            if (!migratedRoot.equals(root)) {
+                mapper.writerWithDefaultPrettyPrinter().writeValue(fileCareer, migratedRoot);
+            }
+
+            Career career = mapper.treeToValue(migratedRoot, Career.class);
 
             career.getCourses().replaceAll(course -> {
                 if (course.getSemester() == CourseSemester.I && !(course instanceof AptitudinalCourse)) {
@@ -86,7 +124,9 @@ public final class Storage {
 
     public static void saveCareer(Career career) {
         try {
-            mapper.writerWithDefaultPrettyPrinter().writeValue(fileCareer, career);
+            ObjectNode root = mapper.valueToTree(career);
+            root.put("schemaVersion", CURRENT_SCHEMA_VERSION);
+            mapper.writerWithDefaultPrettyPrinter().writeValue(fileCareer, root);
             System.out.println("Career saved: " + career);
         } catch (IOException e) {
             e.printStackTrace();

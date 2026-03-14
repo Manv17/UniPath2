@@ -3,7 +3,9 @@ package org.example.unipath2.ui.controllers.windows.simulations;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import org.example.unipath2.application.functions.forms.FormValidator;
 import org.example.unipath2.domain.course.Course;
+import org.example.unipath2.domain.enums.CourseSemester;
 import org.example.unipath2.ui.controllers.BaseController;
 import org.example.unipath2.domain.enums.Colors;
 import org.example.unipath2.domain.enums.CourseStatus;
@@ -11,6 +13,8 @@ import org.example.unipath2.application.statistics.Statistic;
 import org.example.unipath2.application.statistics.numeric.BaseCalculatorStatistic;
 import org.example.unipath2.application.statistics.numeric.NumericStrategy;
 import org.example.unipath2.application.statistics.numeric.WeightedAvgStatistic;
+
+import java.time.LocalDate;
 
 public class SimulateController extends BaseController {
 
@@ -77,16 +81,29 @@ public class SimulateController extends BaseController {
         double newBase = newWAvg * (110.0 / 30.0);
 
         setLabels(newWAvg, newCfu, newBase);
+
         changeLabelColor(wAvgLabel, wAvg, newWAvg);
         changeLabelColor(baseLabel, base, newBase);
         changeLabelColor(cfuLabel, cfu, newCfu);
     }
 
     public void simulateGrade() {
+        if (!validateForm(courseChoice.getValue())) {
+            return;
+        }
+
         resetLabelColor(wAvgLabel);
         resetLabelColor(baseLabel);
         resetLabelColor(cfuLabel);
         refreshUI();
+    }
+
+    private boolean validateForm(Course course) {
+
+        FormValidator validator = new FormValidator();
+        validator.validateNotNull(course, courseChoice);
+
+        return validator.isValid();
     }
 
     private void setLabels(double wAvg, int cfu, double base) {

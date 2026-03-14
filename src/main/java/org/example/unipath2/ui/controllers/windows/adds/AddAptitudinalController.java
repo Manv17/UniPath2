@@ -94,7 +94,7 @@ public class AddAptitudinalController extends WindowController {
                 .validateNotNull(year, yearChoice)
                 .validateNotNull(courseStatus, statusChoice);
 
-        if (courseStatus == CourseStatus.SUPERATO) {
+        if (courseStatus == CourseStatus.SUPERATO || courseStatus == CourseStatus.PIANIFICATO) {
             validator.validateNotNull(date, datePicker);
         }
 

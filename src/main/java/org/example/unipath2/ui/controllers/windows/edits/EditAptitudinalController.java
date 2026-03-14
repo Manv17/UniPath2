@@ -85,7 +85,7 @@ public class EditAptitudinalController extends WindowController {
         FormValidator validator = new FormValidator();
         validator.validateNotNull(status, statusChoice);
 
-        if (status.equals(CourseStatus.SUPERATO)){
+        if (status == CourseStatus.SUPERATO || status == CourseStatus.PIANIFICATO) {
             validator.validateNotNull(date, datePicker);
         }
 

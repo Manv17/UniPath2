@@ -1,5 +1,6 @@
 package org.example.unipath2.ui.controllers.pages;
 
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -12,7 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Tooltip;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import org.example.unipath2.application.statistics.courseList.NextExamsStatistic;
@@ -74,7 +74,7 @@ public class HomeController extends BaseController implements Observer {
     @FXML
     public Label baseInfoLabel;
 
-    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd MMMM", Locale.ITALIAN);
+    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.ITALIAN);
 
     @Override
     public void onContextSet() {
@@ -194,13 +194,27 @@ public class HomeController extends BaseController implements Observer {
 
             double avg = weightedSum / cfuSum;
 
-            String label = c.getDate().toString();
+            String label = dateTimeFormatter.format(c.getDate());
             series.getData().add(new XYChart.Data<>(label, avg));
         }
 
         avgChart.getData().clear();
         avgChart.getData().add(series);
 
+        Platform.runLater(() -> {
+            for (XYChart.Data<String, Number> data : series.getData()) {
+                if (data.getNode() != null) {
+
+                    Tooltip tooltip = new Tooltip(
+                            data.getXValue() + "\n" +
+                                    "Media: " + String.format(Locale.ITALIAN, "%.2f", data.getYValue().doubleValue())
+                    );
+                    tooltip.setShowDelay(javafx.util.Duration.millis(100));
+                    tooltip.setStyle("-fx-font-size: 14px; -fx-background-color: black; -fx-text-fill: white;");
+                    Tooltip.install(data.getNode(), tooltip);
+                }
+            }
+        });
 
         xAvgChart.setTickLabelsVisible(false);
         xAvgChart.setTickMarkVisible(false);
@@ -210,7 +224,7 @@ public class HomeController extends BaseController implements Observer {
     }
 
     @FXML
-    public void handleSimulateButton(ActionEvent event) {
+    public void handleSimulateButton() {
         openWindow("/org/example/unipath2/views/windows/simulateGrade-view.fxml");
     }
 
@@ -225,12 +239,12 @@ public class HomeController extends BaseController implements Observer {
     }
 
     @FXML
-    public void handleSettingsButton(ActionEvent event) {
+    public void handleSettingsButton() {
         openWindow("/org/example/unipath2/views/windows/settings-view.fxml");
     }
 
     @FXML
-    public void HandleSimulateGoalButton(ActionEvent event) {
+    public void HandleSimulateGoalButton() {
         openWindow("/org/example/unipath2/views/windows/simulateGoal-view.fxml");
     }
 

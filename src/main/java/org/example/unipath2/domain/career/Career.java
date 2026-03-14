@@ -7,6 +7,7 @@ import org.example.unipath2.domain.enums.CourseType;
 import org.example.unipath2.domain.enums.DegreeType;
 import org.example.unipath2.application.exception.DuplicateCourseException;
 
+import java.time.Year;
 import java.util.*;
 
 public class Career implements Subject {
@@ -17,12 +18,15 @@ public class Career implements Subject {
     @JsonIgnore
     private int TOTAL_CFU;
 
-    private DegreeType degreeType = DegreeType.TRIENNALE;
+    private DegreeType degreeType;
+    private Integer enrollmentYear = Year.now().getValue();
 
     public Career() {
         this.courses = new ArrayList<>();
-        this.graduation = null;
+        this.degreeType = DegreeType.TRIENNALE;
         this.setTOTAL_CFU(180);
+        this.enrollmentYear = Year.now().getValue();
+        this.graduation = null;
     }
 
     @Override
@@ -102,5 +106,13 @@ public class Career implements Subject {
     public void resetCareer() {
         courses.clear();
         notifyObservers();
+    }
+
+    public Integer getEnrollmentYear() {
+        return enrollmentYear;
+    }
+
+    public void setEnrollmentYear(Integer enrollmentYear) {
+        this.enrollmentYear = enrollmentYear;
     }
 }
