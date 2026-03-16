@@ -52,7 +52,7 @@ public abstract class BaseController implements Observer {
         stage.close();
     }
 
-    protected void openWindow(String fxml) {
+    public void openWindow(String fxml) {
         ViewManager.openWindow(fxml, career);
     }
 
