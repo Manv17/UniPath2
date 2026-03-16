@@ -3,6 +3,7 @@ package org.example.unipath2.ui.controllers.pages;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
@@ -22,10 +23,7 @@ import org.example.unipath2.application.statistics.minmax.MinStatistic;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
+import java.util.*;
 
 public class StatsController extends BaseController implements Observer {
 
@@ -47,11 +45,11 @@ public class StatsController extends BaseController implements Observer {
     @FXML
     public LineChart<String, Number> weightedAvgGradesChart;
     @FXML
-    public LineChart<String, Number> cfuChart;
-    @FXML
     public HBox statusCard;
     @FXML
     public Label statusLabel;
+    @FXML
+    public BarChart<String, Number> semesterCfuChart;
 
     DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.ITALIAN);
 
@@ -129,6 +127,7 @@ public class StatsController extends BaseController implements Observer {
 
         double weightedSum = 0;
         double cfuSum = 0;
+        List<String> courseNames = new ArrayList<>();
 
         for (Course c : passed) {
             weightedSum += c.getGrade() * c.getCfu();
@@ -136,6 +135,7 @@ public class StatsController extends BaseController implements Observer {
 
             double avg = weightedSum / cfuSum;
             String label = dateTimeFormatter.format(c.getDate());
+            courseNames.add(c.getName());
 
             avgSeries.getData().add(new XYChart.Data<>(label, avg));
             gradesSeries.getData().add(new XYChart.Data<>(label, c.getGrade()));
@@ -156,10 +156,12 @@ public class StatsController extends BaseController implements Observer {
                 }
             }
 
-            for (XYChart.Data<String, Number> data : gradesSeries.getData()) {
+            for (int i = 0; i < gradesSeries.getData().size(); i++) {
+                XYChart.Data<String, Number> data = gradesSeries.getData().get(i);
                 if (data.getNode() != null) {
                     Tooltip tooltip = new Tooltip(
                             data.getXValue() + "\n" +
+                                    "Corso: " + courseNames.get(i) + "\n" +
                                     "Voto: " + data.getYValue().intValue()
                     );
                     tooltip.setShowDelay(Duration.millis(100));
@@ -171,31 +173,51 @@ public class StatsController extends BaseController implements Observer {
     }
 
     private void updateCfuChart() {
-        cfuChart.getData().clear();
-        hideXaxis(cfuChart);
+        semesterCfuChart.getData().clear();
+        hideXaxis(semesterCfuChart);
 
         XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.setName("Andamento CFU");
+        series.setName("CFU per semestre");
 
-        int totalCfu = 0;
+        List<Course> passed = new ArrayList<>(statistic.getPassedCourse());
 
-        List<Course> passed = statistic.getValidPassedCourse();
         passed.sort(Comparator.comparing(Course::getDate));
 
+        Map<String, Integer> cfuBySemester = new LinkedHashMap<>();
+
         for (Course course : passed) {
-            totalCfu += course.getCfu();
-            String label = dateTimeFormatter.format(course.getDate());
-            series.getData().add(new XYChart.Data<>(label, totalCfu));
+            LocalDate date = course.getDate();
+            int month = date.getMonthValue();
+            int year = date.getYear();
+
+            String label;
+
+            if (month >= 10) {
+                int academicEndYear = year + 1;
+                label = year + "/" + String.valueOf(academicEndYear).substring(2) + " - Primo Semestre";
+            } else if (month <= 3) {
+                int academicStartYear = year - 1;
+                label = academicStartYear + "/" + String.valueOf(year).substring(2) + " - Primo Semestre";
+            } else {
+                int academicStartYear = year - 1;
+                label = academicStartYear + "/" + String.valueOf(year).substring(2) + " - Secondo Semestre";
+            }
+
+            cfuBySemester.put(label, cfuBySemester.getOrDefault(label, 0) + course.getCfu());
         }
 
-        cfuChart.getData().add(series);
+        for (Map.Entry<String, Integer> entry : cfuBySemester.entrySet()) {
+            series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
+        }
+
+        semesterCfuChart.getData().add(series);
 
         Platform.runLater(() -> {
             for (XYChart.Data<String, Number> data : series.getData()) {
                 if (data.getNode() != null) {
                     Tooltip tooltip = new Tooltip(
                             data.getXValue() + "\n" +
-                                    "CFU: " + data.getYValue().intValue()
+                                    "CFU acquisiti: " + data.getYValue().intValue()
                     );
                     tooltip.setShowDelay(Duration.millis(100));
                     tooltip.setStyle("-fx-font-size: 14px; -fx-background-color: black; -fx-text-fill: white;");
@@ -206,6 +228,12 @@ public class StatsController extends BaseController implements Observer {
     }
 
     private void hideXaxis(LineChart<String, Number> chart) {
+        var xAxis = (CategoryAxis) chart.getXAxis();
+        xAxis.setTickLabelsVisible(false);
+        xAxis.setTickMarkVisible(false);
+        xAxis.setOpacity(1);
+    }
+    private void hideXaxis(BarChart<String, Number> chart) {
         var xAxis = (CategoryAxis) chart.getXAxis();
         xAxis.setTickLabelsVisible(false);
         xAxis.setTickMarkVisible(false);

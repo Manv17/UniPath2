@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -92,7 +93,7 @@
                         <Font name="SF Pro Display Bold" size="36.0" />
                      </font>
                   </Label>
-                  <VBox layoutX="50.0" layoutY="100.0" prefHeight="600.0" prefWidth="1000.0" spacing="20.0">
+                  <VBox layoutX="50.0" layoutY="90.0" prefHeight="610.0" prefWidth="1000.0" spacing="20.0">
                      <children>
                         <HBox prefHeight="50.0" prefWidth="200.0">
                            <children>
@@ -112,9 +113,9 @@
                         </HBox>
                         <HBox maxHeight="90.0" prefHeight="90.0" prefWidth="300.0">
                            <children>
-                              <HBox maxHeight="90.0" prefHeight="90.0" spacing="20.0">
+                              <HBox maxHeight="80.0" prefHeight="80.0" spacing="20.0">
                                  <children>
-                                    <VBox maxHeight="90.0" prefHeight="90.0" prefWidth="250.0" spacing="10.0" style="-fx-background-color: fff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
+                                    <VBox maxHeight="80.0" prefHeight="80.0" prefWidth="250.0" spacing="10.0" style="-fx-background-color: fff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
                                        <children>
                                           <HBox spacing="30.0">
                                              <children>
@@ -127,7 +128,7 @@
                                                       </Text>
                                                       <Label id="avgLabel" fx:id="avgLabel" text="Label">
                                                          <font>
-                                                            <Font name="SF Pro Display Bold" size="24.0" />
+                                                            <Font name="SF Pro Display Bold" size="22.0" />
                                                          </font>
                                                       </Label>
                                                    </children>
@@ -136,10 +137,10 @@
                                           </HBox>
                                        </children>
                                        <padding>
-                                          <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                                          <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
                                        </padding>
                                     </VBox>
-                                    <VBox maxHeight="90.0" prefHeight="90.0" prefWidth="250.0" spacing="10.0" style="-fx-background-color: fff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
+                                    <VBox maxHeight="80.0" prefHeight="80.0" prefWidth="250.0" spacing="10.0" style="-fx-background-color: fff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
                                        <children>
                                           <HBox spacing="30.0">
                                              <children>
@@ -152,7 +153,7 @@
                                                       </Text>
                                                       <Label id="avgLabel" fx:id="careerProgressLabel" text="Label">
                                                          <font>
-                                                            <Font name="SF Pro Display Bold" size="24.0" />
+                                                            <Font name="SF Pro Display Bold" size="22.0" />
                                                          </font>
                                                       </Label>
                                                    </children>
@@ -161,10 +162,10 @@
                                           </HBox>
                                        </children>
                                        <padding>
-                                          <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                                          <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
                                        </padding>
                                     </VBox>
-                                    <VBox maxHeight="90.0" prefHeight="90.0" prefWidth="250.0" spacing="10.0" style="-fx-background-color: fff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
+                                    <VBox maxHeight="80.0" prefHeight="80.0" prefWidth="250.0" spacing="10.0" style="-fx-background-color: fff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
                                        <children>
                                           <HBox spacing="30.0">
                                              <children>
@@ -177,7 +178,7 @@
                                                       </Text>
                                                       <Label id="avgLabel" fx:id="courseProgressLabel" text="Label">
                                                          <font>
-                                                            <Font name="SF Pro Display Bold" size="24.0" />
+                                                            <Font name="SF Pro Display Bold" size="22.0" />
                                                          </font>
                                                       </Label>
                                                    </children>
@@ -186,10 +187,10 @@
                                           </HBox>
                                        </children>
                                        <padding>
-                                          <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                                          <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
                                        </padding>
                                     </VBox>
-                                    <VBox maxHeight="90.0" prefHeight="90.0" prefWidth="250.0" spacing="10.0" style="-fx-background-color: fff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
+                                    <VBox maxHeight="80.0" prefHeight="80.0" prefWidth="250.0" spacing="10.0" style="-fx-background-color: fff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
                                        <children>
                                           <HBox spacing="30.0">
                                              <children>
@@ -202,7 +203,7 @@
                                                       </Text>
                                                       <Label id="avgLabel" fx:id="plannedCourseLabel" text="Label">
                                                          <font>
-                                                            <Font name="SF Pro Display Bold" size="24.0" />
+                                                            <Font name="SF Pro Display Bold" size="22.0" />
                                                          </font>
                                                       </Label>
                                                    </children>
@@ -211,7 +212,7 @@
                                           </HBox>
                                        </children>
                                        <padding>
-                                          <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                                          <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
                                        </padding>
                                     </VBox>
                                  </children>
@@ -220,9 +221,9 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="300.0">
                            <children>
-                              <HBox maxHeight="90.0" prefHeight="90.0" spacing="20.0">
+                              <HBox maxHeight="80.0" prefHeight="80.0" spacing="20.0">
                                  <children>
-                                    <VBox prefHeight="90.0" prefWidth="490.0" spacing="10.0" style="-fx-background-color: fff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
+                                    <VBox maxHeight="80.0" prefHeight="80.0" prefWidth="490.0" spacing="10.0" style="-fx-background-color: fff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
                                        <children>
                                           <HBox spacing="30.0">
                                              <children>
@@ -235,7 +236,7 @@
                                                       </Text>
                                                       <Label id="avgLabel" fx:id="bestCourseLabel" text="Label">
                                                          <font>
-                                                            <Font name="SF Pro Display Bold" size="24.0" />
+                                                            <Font name="SF Pro Display Bold" size="22.0" />
                                                          </font>
                                                       </Label>
                                                    </children>
@@ -244,10 +245,10 @@
                                           </HBox>
                                        </children>
                                        <padding>
-                                          <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                                          <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
                                        </padding>
                                     </VBox>
-                                    <VBox prefHeight="90.0" prefWidth="490.0" spacing="10.0" style="-fx-background-color: fff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
+                                    <VBox maxHeight="80.0" prefHeight="80.0" prefWidth="490.0" spacing="10.0" style="-fx-background-color: fff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
                                        <children>
                                           <HBox spacing="30.0">
                                              <children>
@@ -260,7 +261,7 @@
                                                       </Text>
                                                       <Label id="avgLabel" fx:id="worstCourseLabel" text="Label">
                                                          <font>
-                                                            <Font name="SF Pro Display Bold" size="24.0" />
+                                                            <Font name="SF Pro Display Bold" size="22.0" />
                                                          </font>
                                                       </Label>
                                                    </children>
@@ -269,7 +270,7 @@
                                           </HBox>
                                        </children>
                                        <padding>
-                                          <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                                          <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
                                        </padding>
                                     </VBox>
                                  </children>
@@ -278,7 +279,7 @@
                         </HBox>
                         <HBox prefHeight="350.0" prefWidth="1000.0" spacing="20.0" stylesheets="@../../styles/graph-style.css">
                            <children>
-                              <VBox spacing="6.0" style="-fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
+                              <VBox prefHeight="350.0" spacing="6.0" style="-fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
                                  <children>
                                     <Label text="Andamento media ponderata e voti">
                                        <font>
@@ -290,35 +291,44 @@
                                     </Label>
                                     <LineChart fx:id="weightedAvgGradesChart" styleClass="avg-series" stylesheets="@../../styles/graph-style.css" titleSide="BOTTOM">
                                       <xAxis>
-                                        <CategoryAxis side="BOTTOM" />
+                                        <CategoryAxis maxHeight="0.0" prefHeight="0.0" side="BOTTOM" />
                                       </xAxis>
                                       <yAxis>
-                                        <NumberAxis autoRanging="false" forceZeroInRange="false" lowerBound="18.0" minorTickCount="0" side="LEFT" tickLabelGap="6.0" tickLength="4.0" tickUnit="1.0" upperBound="30.0" />
+                                        <NumberAxis autoRanging="false" forceZeroInRange="false" lowerBound="18.0" minorTickCount="0" side="LEFT" tickLabelGap="6.0" tickLength="4.0" tickUnit="1.0" upperBound="30.0">
+                                             <tickLabelFont>
+                                                <Font name="SF Pro Display Regular" size="10.0" />
+                                             </tickLabelFont></NumberAxis>
                                       </yAxis>
                                     </LineChart>
                                  </children>
                                  <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="12.0" />
+                                    <Insets bottom="6.0" left="12.0" right="12.0" top="12.0" />
                                  </padding>
                               </VBox>
-                              <VBox spacing="6.0" style="-fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
+                              <VBox prefHeight="350.0" spacing="6.0" style="-fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: e1e1e1;">
                                  <children>
-                                    <Label text="Andamento CFU">
+                                    <Label text="Andamento CFU nei diversi semestri">
                                        <font>
                                           <Font name="SF Pro Display Semibold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <LineChart fx:id="cfuChart" styleClass="avg-series">
+                                    <BarChart fx:id="semesterCfuChart" categoryGap="30.0" stylesheets="@../../styles/graph-style.css" titleSide="BOTTOM">
                                       <xAxis>
                                         <CategoryAxis side="BOTTOM" />
                                       </xAxis>
                                       <yAxis>
-                                        <NumberAxis autoRanging="false" side="LEFT" tickUnit="30.0" upperBound="180.0" />
+                                        <NumberAxis minorTickCount="0" minorTickLength="10.0" minorTickVisible="false" side="LEFT" tickLabelGap="6.0" tickLength="4.0" tickUnit="10.0" upperBound="0.0">
+                                             <tickLabelFont>
+                                                <Font name="SF Pro Display Regular" size="10.0" />
+                                             </tickLabelFont></NumberAxis>
                                       </yAxis>
-                                    </LineChart>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </BarChart>
                                  </children>
                                  <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="12.0" />
+                                    <Insets bottom="6.0" left="12.0" right="12.0" top="12.0" />
                                  </padding>
                               </VBox>
                            </children>

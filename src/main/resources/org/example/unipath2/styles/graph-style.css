@@ -83,3 +83,46 @@
     -fx-font-size: 14px;
     -fx-font-weight: bold;
 }
+
+
+/* =======================
+   BAR CHART - IOS STYLE
+   ======================= */
+
+.chart-bar {
+    -fx-bar-fill: #1566FF;
+    -fx-background-radius: 8px 8px 0 0;
+    -fx-border-radius: 8px 8px 0 0;
+}
+
+.default-color0.chart-bar {
+    -fx-bar-fill: #1566FF;
+}
+
+
+.chart-bar:hover {
+    -fx-scale-x: 1.05;
+        -fx-scale-y: 1.05;
+    -fx-cursor: hand;
+    -fx-border-radius: 8px 8px 0 0;
+
+}
+
+
+/* sfondo area plot più clean */
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+
+.chart-vertical-grid-lines {
+    -fx-stroke: transparent;
+}
+
+.chart-alternative-row-fill {
+    -fx-fill: transparent;
+}
+
+.chart-alternative-column-fill {
+    -fx-fill: transparent;
+}

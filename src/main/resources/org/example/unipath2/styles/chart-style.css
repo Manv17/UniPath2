@@ -3,12 +3,11 @@
     -fx-pie-color: #20b2aa;
 }
 .chart-pie.data1 { /* Da fare */
-    -fx-pie-color: rgb(199, 199, 204);
+    -fx-pie-color: #D1D1D6;
 }
 .chart-pie.data2 { /* Programmati */
-    -fx-pie-color: rgb(255, 66,69);
+    -fx-pie-color: #FF453A;
 }
-
 .chart-title {
     -fx-text-fill: #222;
     -fx-font-family: "SF Pro Display";

@@ -20,4 +20,5 @@ Desktop application dedicated to University students.
 15. Gestione prova finale nel calcolo della base ✅
 16. Automatizzazione aggiunta esami tramite "Piano di studi" formato PDF
 17. Informazioni su calcolo Base di Laurea ✅
-18. Migliorare rings (bg color)
+18. Migliorare rings (bg color) ✅
+19. Cambiare grafico "Andamento CFU" 🚧
