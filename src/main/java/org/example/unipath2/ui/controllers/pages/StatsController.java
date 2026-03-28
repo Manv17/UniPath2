@@ -83,14 +83,7 @@ public class StatsController extends BaseController implements Observer {
     }
 
     private void updateStatus() {
-        Integer enrollmentYear = career.getEnrollmentYear();
-        DegreeType degreeType = career.getDegreeType();
-
-        LocalDate enrollmentDate = LocalDate.of(enrollmentYear, 9, 15);
-
-        LocalDate deadline = degreeType == DegreeType.TRIENNALE
-                ? enrollmentDate.plusYears(3).plusMonths(6)
-                : enrollmentDate.plusYears(2).plusMonths(6);
+        LocalDate deadline = getDeadline();
 
         LocalDate today = LocalDate.now();
 
@@ -110,6 +103,24 @@ public class StatsController extends BaseController implements Observer {
                     "-fx-background-radius: 12px;" +
                     "-fx-border-radius: 12px;");
         }
+    }
+
+    private LocalDate getDeadline() {
+        Integer enrollmentYear = career.getEnrollmentYear();
+        DegreeType degreeType = career.getDegreeType();
+
+        LocalDate enrollmentDate = LocalDate.of(enrollmentYear, 9, 15);
+
+        LocalDate deadline;
+
+        if (degreeType == DegreeType.TRIENNALE) {
+            deadline = enrollmentDate.plusYears(3).plusMonths(6);
+        } else if (degreeType == DegreeType.CICLO_UNICO) {
+            deadline = enrollmentDate.plusYears(5).plusMonths(6);
+        } else {
+            deadline = enrollmentDate.plusYears(2).plusMonths(6);
+        }
+        return deadline;
     }
 
     private void updateWeightedAvgChart() {

@@ -12,9 +12,9 @@ import java.util.*;
 
 public class Career implements Subject {
     private final List<Course> courses;
-    private Graduation graduation;
     @JsonIgnore
     private final Set<Observer> observers = new HashSet<>();
+    private Graduation graduation;
     @JsonIgnore
     private int TOTAL_CFU;
 
@@ -89,8 +89,10 @@ public class Career implements Subject {
         this.degreeType = (degreeType != null) ? degreeType : DegreeType.TRIENNALE;
         if (degreeType == DegreeType.TRIENNALE) {
             setTOTAL_CFU(180);
-        } else {
+        } else if (degreeType == DegreeType.MAGISTRALE) {
             setTOTAL_CFU(120);
+        } else {
+            setTOTAL_CFU(300);
         }
         notifyObservers();
     }

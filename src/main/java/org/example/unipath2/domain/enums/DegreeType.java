@@ -2,5 +2,6 @@ package org.example.unipath2.domain.enums;
 
 public enum DegreeType {
     TRIENNALE,
-    MAGISTRALE
+    MAGISTRALE,
+    CICLO_UNICO
 }

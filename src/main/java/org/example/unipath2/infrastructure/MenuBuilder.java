@@ -1,5 +1,6 @@
 package org.example.unipath2.infrastructure;
 
+import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -7,6 +8,9 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.stage.Stage;
 import org.example.unipath2.ui.controllers.BaseController;
+
+import java.awt.*;
+import java.util.Locale;
 
 public final class MenuBuilder {
 
@@ -17,7 +21,7 @@ public final class MenuBuilder {
         MenuBar menuBar = new MenuBar();
         menuBar.setUseSystemMenuBar(true);
 
-        Menu appMenu = new Menu("UniPath2");
+        Menu appMenu = new Menu("Aiuto");
 
         MenuItem aboutItem = new MenuItem("Informazioni su UniPath2");
         aboutItem.setOnAction(e -> {
@@ -51,4 +55,5 @@ public final class MenuBuilder {
         menuBar.getMenus().add(appMenu);
         return menuBar;
     }
+
 }
